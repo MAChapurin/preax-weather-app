@@ -168,6 +168,11 @@
 @media (max-width: 600px) {
 	.form {
 		margin-right: 16px;
+		height: 32px;
+	}
+
+	.input {
+		height: 32px;
 	}
 	.openDropdown {
 		margin-right: 0;
