@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/preax-weather-app/static/css/main.7311abc8.css",
-    "main.js": "/preax-weather-app/static/js/main.d362a93b.js",
+    "main.js": "/preax-weather-app/static/js/main.55faef91.js",
     "static/media/Raleway-Bold.woff": "/preax-weather-app/static/media/Raleway-Bold.5b5be11238361a418d5c.woff",
     "static/media/Raleway-Regular.woff": "/preax-weather-app/static/media/Raleway-Regular.3037b2778791d46a4a51.woff",
     "static/media/Raleway-Bold.woff2": "/preax-weather-app/static/media/Raleway-Bold.8b42199985e84bbe21f5.woff2",
@@ -20,10 +20,10 @@
     "static/media/direction.svg": "/preax-weather-app/static/media/direction.bc436c1a5c1b394b87f744b3b0d7babf.svg",
     "index.html": "/preax-weather-app/index.html",
     "main.7311abc8.css.map": "/preax-weather-app/static/css/main.7311abc8.css.map",
-    "main.d362a93b.js.map": "/preax-weather-app/static/js/main.d362a93b.js.map"
+    "main.55faef91.js.map": "/preax-weather-app/static/js/main.55faef91.js.map"
   },
   "entrypoints": [
     "static/css/main.7311abc8.css",
-    "static/js/main.d362a93b.js"
+    "static/js/main.55faef91.js"
   ]
 }
