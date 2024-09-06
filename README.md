@@ -10,12 +10,12 @@
 - Определения геолокации
 - Темная тема
 
-Проект выполнен в рамках стажировки на [Preax](https://preax.ru){:target="\_blank"}
+Проект выполнен в рамках стажировки на [Preax](https://preax.ru)
 
 ## Деплой
 
-Посмотреть готовую реализацию можно [здесь](https://){:target="\_blank"}
+Посмотреть готовую реализацию можно [здесь](https://machapurin.github.io/preax-weather-app/)
 
 ## Макет
 
-[Здесь можно посмотреть макет](https://www.figma.com/design/zqsDBxCwYvAiJ1l79XIgCC/Weather-App.-3-sprint.-7-task?node-id=21042-8857&node-type=CANVAS&t=VbXyeMnGDEbCx855-0){:target="\_blank"}
+[Здесь можно посмотреть макет](https://www.figma.com/design/zqsDBxCwYvAiJ1l79XIgCC/Weather-App.-3-sprint.-7-task?node-id=21042-8857&node-type=CANVAS&t=VbXyeMnGDEbCx855-0)

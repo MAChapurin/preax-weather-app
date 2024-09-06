@@ -36,7 +36,7 @@ export function App() {
 		<div
 			className='app'
 			style={{
-				backgroundImage: `url("/bg/${backgroundImage}")`,
+				backgroundImage: `url("bg/${backgroundImage}")`,
 			}}
 		>
 			<div
