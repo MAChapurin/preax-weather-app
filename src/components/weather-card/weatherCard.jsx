@@ -80,7 +80,7 @@ export const WeatherCard = ({
 				<As
 					className={cn(styles.card, className)}
 					style={{
-						backgroundImage: `url("/bg/${backgroundImage}")`,
+						backgroundImage: `url("bg/${backgroundImage}")`,
 					}}
 				>
 					<button
