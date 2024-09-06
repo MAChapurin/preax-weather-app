@@ -2,6 +2,7 @@ import styles from './styles.module.css';
 import { Icon } from '../icon/Icon';
 import { cn } from '../../utils/cn';
 import { useWeather } from '../../hooks/useWeatherContext';
+import { useEffect, useRef } from 'react';
 
 const Input = ({
 	handleChange,
@@ -11,8 +12,14 @@ const Input = ({
 	handleClear,
 }) => {
 	const { isDropdownOpen, setIsGeoActive } = useWeather();
+	const inputRef = useRef(null);
 	const handleGeo = () => {
 		setIsGeoActive(true);
+	};
+
+	const onFocus = (e) => {
+		e.preventDefault();
+		handleClick();
 	};
 	return (
 		<form
@@ -22,7 +29,8 @@ const Input = ({
 			onSubmit={handleSubmit}
 		>
 			<input
-				onFocus={handleClick}
+				ref={inputRef}
+				onFocus={onFocus}
 				type='text'
 				className={styles.input}
 				name='city'

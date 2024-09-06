@@ -208,12 +208,3 @@
 		fill: var(--dark-filled-900);
 	}
 }
-
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-	.input {
-		font-size: 14px;
-	}
-	.input:focus {
-		font-size: 14px;
-	}
-}
