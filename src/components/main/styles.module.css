@@ -1,0 +1,29 @@
+.main {
+	display: flex;
+	column-gap: var(--std-offset-xs);
+	row-gap: var(--std-offset-md);
+	margin-bottom: 20px;
+	transition: margin 0.5s;
+}
+
+.main > *:first-child {
+	flex-grow: 1;
+}
+
+.main > *:last-child {
+	flex-basis: var(--col-right-width);
+}
+
+@media (max-width: 991.98px) {
+	.main {
+		flex-wrap: wrap;
+		row-gap: var(--std-offset-lg);
+	}
+}
+
+@media (max-width: 699.98px) {
+	.main {
+		row-gap: var(--std-offset-md);
+		margin-bottom: 16px;
+	}
+}

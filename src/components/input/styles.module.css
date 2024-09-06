@@ -1,0 +1,205 @@
+.form {
+	display: flex;
+	border-radius: var(--std-border-radius);
+	margin-right: 70px;
+	flex-grow: 1;
+	background: var(--light-tone-100);
+	overflow: hidden;
+	transition: background 0.5s, height 0.5s, width 0.5s, max-width 0.5s,
+		margin 0.5s;
+}
+
+.openDropdown {
+	margin-right: 0;
+}
+
+.input {
+	padding: 12px 16px;
+	width: 100%;
+	font-size: 20px;
+	line-height: 24px;
+	color: var(--clr-neutral-1);
+	outline: none !important;
+	background: transparent;
+	border-top-left-radius: var(--std-border-radius);
+	border-bottom-left-radius: var(--std-border-radius);
+	border: none;
+	transition: background-color 0.5s, color 0.5s, height 0.5s, width 0.5s;
+}
+
+.input::placeholder {
+	color: var(--light-filled-600);
+	width: 100%;
+}
+
+.input:placeholder-shown {
+	text-overflow: ellipsis;
+}
+
+[data-theme='dark'] .form {
+	background-color: var(--dark-tone-100);
+}
+
+[data-theme='dark'] .input {
+	color: var(--dark-filled-900);
+}
+
+[data-theme='dark'] .input::placeholder {
+	color: var(--dark-filled-600);
+}
+
+.button {
+	padding: 12px 16px 12px 0;
+	background: transparent;
+	border: none;
+	outline: none;
+	transition: background 0.5s;
+}
+
+[data-theme='dark'] .button {
+	/* background-color: red; */
+}
+
+.button path {
+	transition: stroke 0.5s, fill 0.5s;
+}
+
+[data-theme='dark'] .button svg#searchiconsvg path {
+	stroke: var(--dark-filled-700);
+	fill: var(--dark-filled-900);
+}
+
+.form:focus-within {
+	background: var(--clr-neutral-3);
+}
+
+[data-theme='dark'] .form:focus-within {
+	background: var(--dark-filled-200);
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.buttonGeo {
+	border-radius: 8px;
+	padding: 12px 16px;
+	width: 56px;
+	height: 48px;
+	box-shadow: -2px 0 6px 0 rgba(0, 0, 0, 0.15);
+	background: var(--light-tone-600);
+	border: none;
+	outline: none;
+	transition: background 0.5s width 0.5s, height 0.5s;
+}
+
+.buttonGeo:focus {
+	background: var(--light-filled-200);
+}
+
+[data-theme='dark'] .buttonGeo:focus {
+	background: var(--dark-tone-200);
+	cursor: pointer;
+}
+
+.buttonGeo svg {
+	transition: width 0.5s, height 0.5s;
+}
+
+[data-theme='dark'] .buttonGeo {
+	background: var(--dark-tone-500);
+}
+
+@media (max-width: 1000px) {
+	.form {
+		width: 100%;
+		margin-right: 91px;
+	}
+	.openDropdown {
+		margin-right: 0;
+	}
+}
+
+@media (max-width: 767.98px) {
+	.form {
+		margin-right: 25px;
+	}
+	.openDropdown {
+		margin-right: 0;
+	}
+}
+
+@media (max-width: 699.98px) {
+	.form {
+		margin-right: 91px;
+	}
+
+	.openDropdown {
+		margin-right: 0;
+	}
+
+	.input {
+		font-size: 14px;
+		line-height: 16px;
+		padding: 8px 12px;
+	}
+
+	.button {
+		padding: 8px 12px 8px 0;
+	}
+
+	.button > svg {
+		width: 16px;
+		height: 16px;
+	}
+
+	.buttonGeo {
+		width: 40px;
+		height: 32px;
+		padding: 8px 12px;
+	}
+
+	.buttonGeo svg {
+		width: 16px;
+		height: 16px;
+	}
+}
+
+@media (max-width: 600px) {
+	.form {
+		margin-right: 16px;
+	}
+	.openDropdown {
+		margin-right: 0;
+	}
+}
+
+@media (hover: hover) {
+	.form:hover {
+		background-color: var(--light-filled-200);
+	}
+
+	[data-theme='dark'] .form:hover {
+		background-color: var(--dark-filled-200);
+	}
+
+	.button:hover [data-mark='clear'] path {
+		stroke: var(--light-filled-900);
+		fill: var(--light-filled-900);
+	}
+
+	.buttonGeo:hover {
+		background: var(--light-filled-200);
+		cursor: pointer;
+	}
+
+	[data-theme='dark'] .buttonGeo:hover {
+		background: var(--dark-tone-200);
+		cursor: pointer;
+	}
+
+	[data-theme='dark'] .button:hover [data-mark='clear'] path {
+		stroke: var(--dark-filled-900);
+		fill: var(--dark-filled-900);
+	}
+}

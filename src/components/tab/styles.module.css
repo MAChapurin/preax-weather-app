@@ -1,0 +1,36 @@
+.statistic {
+	padding-top: 43px;
+	transition: padding 0.5s;
+}
+
+.statistic-slider {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: var(--std-offset-md);
+}
+
+@media all and (max-width: 1023px) {
+	.statistic {
+		display: flex;
+		flex-direction: column;
+		padding-top: 28px;
+	}
+}
+
+@media all and (max-width: 767px) {
+	.statistic {
+		gap: var(--std-offset-xs-s);
+		padding-top: 14px;
+	}
+	.slide-btn svg {
+		width: 16px;
+		height: 16px;
+	}
+}
+
+@media all and (max-width: 639px) {
+	.statistic-list__item {
+		flex-direction: column;
+	}
+}

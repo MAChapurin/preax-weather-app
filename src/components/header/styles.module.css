@@ -1,0 +1,34 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	column-gap: var(--std-offset-xs);
+	z-index: 20;
+	transition: column-gap 0.5s;
+}
+
+.open {
+	/* justify-content: flex-end; */
+	gap: 0;
+}
+
+.header > *:last-child {
+	flex-basis: var(--col-right-width);
+}
+
+.right {
+	display: flex;
+	width: 506px;
+}
+
+@media (max-width: 991.98px) {
+	.header {
+		column-gap: 135px;
+	}
+}
+
+@media (max-width: 575.98px) {
+	.header {
+		column-gap: var(--std-offset-xs);
+	}
+}

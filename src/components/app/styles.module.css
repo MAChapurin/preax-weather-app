@@ -1,0 +1,47 @@
+.app__container {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--std-offset-inner);
+	margin: 0 auto;
+	max-width: 100%;
+	width: var(--std-container);
+	border-radius: var(--std-border-radius);
+
+	padding: var(--std-offset-container);
+	height: fit-content;
+	/* transition: background 0.5s, backdrop-filter 0.5s; */
+	overflow-x: hidden;
+}
+
+.blur__container {
+	position: absolute;
+	content: '';
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 8px;
+	backdrop-filter: blur(0px);
+	background: transparent;
+	transition: background 0.5s, backdrop-filter 0.5s;
+	pointer-events: none;
+}
+
+.open {
+	background: rgba(112, 112, 112, 0.1);
+	backdrop-filter: blur(25px);
+	transition: background 0.5s, backdrop-filter 0.5s;
+}
+
+.blur {
+	backdrop-filter: blur(25px);
+	background: rgba(112, 112, 112, 0.1);
+}
+
+[data-theme='dark'] .blur {
+	backdrop-filter: blur(50px);
+	background: var(--dark-tone-500);
+}

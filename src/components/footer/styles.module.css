@@ -1,0 +1,23 @@
+.footer {
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: var(--clr-light);
+}
+
+.footer>a {
+  color: var(--clr-light);
+}
+
+@media (min-width: 1200px) {
+  .footer>a:hover {
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 699.98px) {
+  .footer {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}

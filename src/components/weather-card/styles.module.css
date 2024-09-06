@@ -1,0 +1,168 @@
+.card {
+	display: flex;
+	justify-content: space-between;
+	align-items: stretch;
+	align-content: stretch;
+	min-height: 92px;
+
+	list-style-type: none;
+	cursor: pointer;
+	background: center no-repeat;
+	background-size: 100%;
+
+	border-radius: 8px;
+	transition: background 0.5s, background-image 0.5s, height 0.5s,
+		min-height 0.5s;
+	animation-name: heightAnimate;
+	animation-duration: 0.5s;
+	animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.card:hover {
+	background-color: var(--clr-background);
+	background-size: 110%;
+}
+
+.left,
+.right {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.mainBtn {
+	padding: 16px;
+	flex-grow: 1;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	cursor: pointer;
+	font-size: 20px;
+	line-height: 24px;
+	text-align: start;
+	font-family: var(--std-font-family);
+}
+
+.city {
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 133%;
+	color: var(--light-filled-100);
+}
+
+.time {
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 125%;
+	color: var(--light-filled-100);
+}
+
+.degree {
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 133%;
+	color: var(--light-filled-100);
+	text-align: right;
+}
+
+.status {
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 125%;
+	text-align: right;
+	color: var(--light-filled-100);
+	text-align: right;
+}
+
+.supportBtn {
+	border-radius: 8px;
+	padding: 34px 16px;
+	width: 56px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--light-tone-600);
+	backdrop-filter: blur(50px);
+	cursor: pointer;
+	overflow: hidden;
+	transition: background 0.5s;
+	flex-grow: 0;
+}
+
+[data-theme='dark'] .supportBtn {
+	background: var(--dark-tone-500);
+}
+
+.supportBtn svg path {
+	fill: transparent;
+	transition: stroke 0.3s, fill 0.3s;
+}
+
+.supportBtn.checked svg path {
+	stroke: var(--clr-neutral-5);
+	fill: var(--clr-neutral-5);
+}
+
+.supportBtn:disabled svg path {
+	stroke: var(--clr-neutral-6);
+}
+
+.supportBtn:hover svg path {
+	stroke: var(--clr-neutral-1);
+	fill: var(--clr-neutral-1);
+}
+
+@keyframes heightAnimate {
+	from,
+	50% {
+		height: 0;
+	}
+	to {
+		height: min-content;
+	}
+}
+
+@media (max-width: 699px) {
+	.card {
+		overflow-y: auto;
+		min-height: 68px;
+	}
+	.mainBtn {
+		padding: 8px 12px;
+		font-size: 14px;
+		line-height: 16px;
+	}
+
+	.supportBtn {
+		width: 40px;
+		min-width: 40px;
+		min-height: max-content;
+		max-width: 40px;
+		padding: 26px 12px;
+	}
+
+	.city {
+		font-size: 16px;
+		line-height: 20px;
+	}
+
+	.time {
+		font-size: 12px;
+		line-height: 16px;
+	}
+
+	.degree {
+		font-size: 16px;
+		line-height: 20px;
+	}
+
+	.status {
+		font-size: 12px;
+		line-height: 16px;
+	}
+
+	.icon {
+		width: 16px;
+		height: 16px;
+	}
+}

@@ -1,0 +1,30 @@
+.cards {
+  --card-width: 1fr;
+  display: grid;
+  gap: var(--std-offset-xs);
+  grid-template-columns: repeat(3, var(--card-width));
+  grid-auto-rows: 196px;
+}
+
+
+@media (max-width: 991.98px) {
+  .cards {
+    --card-width: 163px;
+    justify-content: center;
+    gap: var(--std-offset-xs-m);
+  }
+}
+
+@media (max-width: 699.98px) {
+  .cards {
+    --card-width: 128px;
+    gap: var(--std-offset-xs-s);
+    grid-auto-rows: 148px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .cards {
+    --card-width: 1fr;
+  }
+}

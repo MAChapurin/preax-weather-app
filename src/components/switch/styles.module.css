@@ -1,0 +1,147 @@
+.switch {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-radius: 8px;
+	padding: 8px 12px;
+	width: 104px;
+	max-width: 104px;
+	height: 48px;
+	background: var(--light-tone-100);
+	transform: translateX(0);
+	transition: background 0.5s, max-width 0.5s, transform 0.5s, width 0.5s,
+		height 0.5s;
+	z-index: 0;
+	cursor: pointer;
+	flex-shrink: 0;
+}
+
+.closed {
+	transform: translateX(200px);
+	max-width: 0;
+	padding: 0;
+}
+
+.hidden {
+	display: none;
+}
+
+[data-theme='dark'] .switch {
+	backdrop-filter: blur(50px);
+	background: var(--dark-tone-100);
+}
+
+.checkbox {
+	display: none;
+}
+
+.switch::after {
+	width: 56px;
+	height: 48px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	content: '';
+	border-radius: 8px;
+	padding: 8px 12px;
+	box-shadow: 2px 0 6px 0 rgba(0, 0, 0, 0.15);
+	background: var(--light-tone-600);
+	z-index: 1;
+	transition: transform 0.5s, box-shadow 0.5s, opacity 0.5s, width 0.5s,
+		height 0.5s, background 0.5s;
+}
+
+.closed.switch::after {
+	opacity: 0;
+}
+
+.day {
+	width: 32px;
+	height: 32px;
+	position: relative;
+	z-index: 2;
+	transition: width 0.3s, height 0.3s;
+}
+
+.night {
+	width: 24px;
+	height: 24px;
+	position: relative;
+	z-index: 2;
+	transition: width 0.3s, height 0.3s;
+}
+
+.night [datatype='theme'] {
+	transition: fill 0.5s;
+}
+
+[data-theme='dark'] .day {
+	width: 24px;
+	height: 24px;
+}
+
+[data-theme='dark'] .night {
+	width: 32px;
+	height: 32px;
+}
+
+[data-theme='dark'] .night [datatype='theme'] {
+	fill: var(--dark-filled-900);
+}
+
+[data-theme='dark'] .switch::after {
+	transform: translateX(48px);
+	backdrop-filter: blur(30px);
+	box-shadow: -4px 0 8px 0 rgba(0, 0, 0, 0.25);
+	background: var(--dark-tone-500);
+}
+
+@media (max-width: 699.98px) {
+	.switch {
+		width: 72px;
+		height: 32px;
+		padding: 4px 8px;
+	}
+
+	.switch::after {
+		width: 40px;
+		height: 32px;
+	}
+
+	[data-theme='dark'] .switch::after {
+		transform: translateX(32px);
+	}
+
+	.day {
+		width: 24px;
+		height: 24px;
+	}
+
+	.night {
+		width: 16px;
+		height: 16px;
+	}
+
+	[data-theme='dark'] .day {
+		width: 16px;
+		height: 16px;
+	}
+
+	[data-theme='dark'] .night {
+		width: 24px;
+		height: 24px;
+	}
+}
+
+@media (hover: hover) {
+	.switch:hover,
+	.switch:hover::after {
+		background: var(--light-filled-200);
+	}
+
+	[data-theme='dark'] .switch:hover,
+	[data-theme='dark'] .switch:hover::after {
+		background: var(--dark-filled-200);
+	}
+}

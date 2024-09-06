@@ -1,0 +1,113 @@
+.card__progress-line-wrapper {
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--std-offset-xs-s);
+	width: 100%;
+	text-align: center;
+}
+
+.card__row {
+	display: flex;
+	justify-content: space-between;
+	column-gap: 16px;
+}
+
+.card__desc {
+	font-size: 12px;
+	line-height: 16px;
+	transition: color 0.5s;
+}
+
+[data-theme='dark'] .card__desc {
+	color: var(--dark-filled-800);
+}
+
+.progress-line {
+	--progress-position: 0;
+	--progress-size: 8px;
+	position: relative;
+	height: var(--progress-size);
+}
+
+.progress-line::before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	mask: radial-gradient(
+		circle at var(--progress-position),
+		transparent 6px,
+		black 2px,
+		black 2px
+	);
+	-webkit-mask: radial-gradient(
+		circle at var(--progress-position),
+		transparent 6px,
+		black 2px,
+		black 2px
+	);
+	border-radius: var(--std-border-radius);
+}
+
+.progress-line--normal::before {
+	background: var(--clr-neutral-3-tone);
+	transition: background 0.5s;
+}
+
+[data-theme='dark'] .progress-line--normal::before {
+	background: var(--dark-tone-200);
+}
+
+.progress-line::after {
+	content: '';
+	display: block;
+	position: absolute;
+	left: var(--progress-position);
+	width: var(--progress-size);
+	height: var(--progress-size);
+	border-radius: 50%;
+	background-color: var(--clr-light);
+	transform: translateX(-50%);
+	transition: left 0.5s ease-in-out;
+}
+
+.progress-line--high::before {
+	background: linear-gradient(
+		90deg,
+		rgba(218, 218, 218, 1) 0%,
+		rgba(218, 218, 218, 0.4) 3%,
+		rgba(138, 138, 138, 0.4) 12%,
+		rgba(84, 84, 84, 0.4) 25%,
+		rgba(84, 84, 84, 0.4) 75%,
+		rgba(138, 138, 138, 0.4) 85%,
+		rgba(218, 218, 218, 0.4) 96%,
+		rgba(218, 218, 218, 1) 100%
+	);
+	transition: background 0.5s;
+}
+
+[data-theme='dark'] .progress-line--high::before {
+	background: radial-gradient(
+		/* 90% 50% at 50%, */ rgb(183, 182, 182) 0%,
+		rgb(78, 78, 78) 45%,
+		rgb(38, 38, 38) 100%
+	);
+}
+
+@media (max-width: 699.98px) {
+	.card__progress-line-wrapper {
+		row-gap: var(--std-offset);
+	}
+
+	.card__desc {
+		font-size: 10px;
+		line-height: 12px;
+	}
+
+	.progress-line {
+		--progress-size: 6px;
+	}
+}

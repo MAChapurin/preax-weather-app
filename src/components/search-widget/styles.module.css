@@ -1,0 +1,29 @@
+.title {
+	margin-bottom: 12px;
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 32px;
+}
+
+[data-theme='dark'] .title {
+	color: var(--dark-filled-900);
+}
+
+.placeholder {
+	font-size: 20px;
+	line-height: 24px;
+	color: var(--clr-neutral-5);
+}
+
+@media (max-width: 699px) {
+	.title {
+		margin-bottom: 8px;
+		font-size: 16px;
+		line-height: 20px;
+	}
+
+	.placeholder {
+		font-size: 14px;
+		line-height: 16px;
+	}
+}
