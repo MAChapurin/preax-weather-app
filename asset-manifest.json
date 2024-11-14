@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/preax-weather-app/static/css/main.e1b818bc.css",
-    "main.js": "/preax-weather-app/static/js/main.f2afe95c.js",
+    "main.css": "/preax-weather-app/static/css/main.47dc315b.css",
+    "main.js": "/preax-weather-app/static/js/main.ac32299f.js",
     "static/media/bg-day-5.webp": "/preax-weather-app/static/media/bg-day-5.a158a15ca94b75fa4426.webp",
     "static/media/bg-dark-5.webp": "/preax-weather-app/static/media/bg-dark-5.62eaa9dc808085f3a242.webp",
     "static/media/bg-day-8.webp": "/preax-weather-app/static/media/bg-day-8.c694c575d83e00887412.webp",
@@ -37,11 +37,11 @@
     "static/media/directiondark.svg": "/preax-weather-app/static/media/directiondark.f753cc7974018c0f283c1001af40313f.svg",
     "static/media/direction.svg": "/preax-weather-app/static/media/direction.bc436c1a5c1b394b87f744b3b0d7babf.svg",
     "index.html": "/preax-weather-app/index.html",
-    "main.e1b818bc.css.map": "/preax-weather-app/static/css/main.e1b818bc.css.map",
-    "main.f2afe95c.js.map": "/preax-weather-app/static/js/main.f2afe95c.js.map"
+    "main.47dc315b.css.map": "/preax-weather-app/static/css/main.47dc315b.css.map",
+    "main.ac32299f.js.map": "/preax-weather-app/static/js/main.ac32299f.js.map"
   },
   "entrypoints": [
-    "static/css/main.e1b818bc.css",
-    "static/js/main.f2afe95c.js"
+    "static/css/main.47dc315b.css",
+    "static/js/main.ac32299f.js"
   ]
 }
