@@ -1,11 +1,10 @@
-import WeatherSearch from '../weather-search/WeatherSearch';
-import Logo from '../logo/Logo';
-import styles from './styles.module.css';
-import { Switch } from '../switch/Switch';
-import { useWeather } from '../../hooks/useWeatherContext';
-import { cn } from '../../utils/cn';
+import { useWeather } from 'hooks';
+import { Logo, Switch, WeatherSearch } from 'components';
+import { cn } from 'utils';
 
-const Header = () => {
+import styles from './styles.module.css';
+
+export const Header = () => {
 	const { isDropdownOpen } = useWeather();
 	return (
 		<header
@@ -21,5 +20,3 @@ const Header = () => {
 		</header>
 	);
 };
-
-export default Header;

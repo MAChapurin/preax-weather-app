@@ -1,4 +1,5 @@
-import { cn } from '../../utils/cn';
+import { cn } from 'utils';
+
 import styles from './styles.module.css';
 
 export function ErrorWidget({

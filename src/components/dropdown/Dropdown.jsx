@@ -1,14 +1,15 @@
-import { useFavorites } from '../../hooks/useFavoriteContext';
-import { Favorites } from '../favorites/Favorites';
-import { Location } from '../location/Location';
-import { useWeather } from '../../hooks/useWeatherContext';
-import { HistoryList } from '../history-list/HistoryList';
-import { SearchWidget } from '../search-widget/SearchWidget';
+import { useFavorites, useWeather } from 'hooks';
+import {
+	Favorites,
+	HistoryList,
+	LifeSearchList,
+	Location,
+	SearchWidget,
+} from 'components';
 
 import styles from './styles.module.css';
-import { LifeSearchList } from '../live-search-list/LiveSearchList';
 
-const Dropdown = ({
+export const Dropdown = ({
 	isCitySearching,
 	citySearchResult,
 	getWeather,
@@ -48,5 +49,3 @@ const Dropdown = ({
 		</div>
 	);
 };
-
-export default Dropdown;

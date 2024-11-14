@@ -1,6 +1,6 @@
 import styles from './styles.module.css';
 
-const CityCard = ({ data }) => {
+export const CityCard = ({ data }) => {
 	console.log(data);
 	return (
 		<div className={styles['panel-info']}>
@@ -28,5 +28,3 @@ const CityCard = ({ data }) => {
 		</div>
 	);
 };
-
-export default CityCard;

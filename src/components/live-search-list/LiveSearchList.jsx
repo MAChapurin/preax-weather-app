@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Title } from '../title/Title';
-import { ApiServices } from '../../api/api.services';
+import { Title } from 'components';
+import { ApiServices } from 'api';
 
 import styles from './styles.module.css';
 

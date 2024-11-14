@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
+import { useWeather } from 'hooks';
+import { Skeleton, WeatherCard } from 'components';
 
-import { Skeleton } from '..';
-import { WeatherCard } from '../weather-card/weatherCard';
-import { ApiServices } from '../../api/api.services';
+import { ApiServices } from 'api';
 
 import styles from './styles.module.css';
-import { useWeather } from '../../hooks/useWeatherContext';
 
 const TEXT = {
 	loading: 'Определяем геопозицию',

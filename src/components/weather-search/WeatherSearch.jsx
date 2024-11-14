@@ -1,12 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
-
-import Dropdown from '../dropdown';
-import Input from '../input';
 import { useDebounceValue, useClickOutside, useWeather } from 'hooks';
+import { Dropdown, Input } from 'components';
 
 import styles from './styles.module.css';
 
-const WeatherSearch = () => {
+export const WeatherSearch = () => {
 	const weatherSearchRef = useRef(null);
 
 	const [value, setValue] = useState('');
@@ -115,5 +113,3 @@ const WeatherSearch = () => {
 		</search>
 	);
 };
-
-export default WeatherSearch;

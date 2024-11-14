@@ -1,10 +1,11 @@
-import styles from './styles.module.css';
-import { Icon } from '../icon/Icon';
-import { cn } from '../../utils/cn';
-import { useWeather } from '../../hooks/useWeatherContext';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
+import { useWeather } from 'hooks';
+import { Icon } from 'components';
+import { cn } from 'utils';
 
-const Input = ({
+import styles from './styles.module.css';
+
+export const Input = ({
 	handleChange,
 	handleClick,
 	handleSubmit,
@@ -60,5 +61,3 @@ const Input = ({
 		</form>
 	);
 };
-
-export default Input;

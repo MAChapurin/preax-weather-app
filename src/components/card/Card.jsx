@@ -1,9 +1,10 @@
-import { useTheme } from '../../hooks/useThemeContext';
-import { ProgressBar } from '../progress-bar/ProgressBar';
+import { useTheme } from 'hooks';
+import { ProgressBar } from 'components';
 import { Image } from './Image';
+
 import styles from './styles.module.css';
 
-const Card = ({ item, className = '' }) => {
+export const Card = ({ item, className = '' }) => {
 	const { isDarkTheme } = useTheme();
 	return (
 		<li className={`${styles['card']} ${className}`}>
@@ -28,5 +29,3 @@ const Card = ({ item, className = '' }) => {
 		</li>
 	);
 };
-
-export default Card;

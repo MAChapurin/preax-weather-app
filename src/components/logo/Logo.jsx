@@ -1,7 +1,8 @@
-import styles from './styles.module.css';
-import { Icon } from '../icon/Icon';
+import { Icon } from 'components';
 
-const Logo = () => {
+import styles from './styles.module.css';
+
+export const Logo = () => {
 	return (
 		<a href='/' className={styles.link}>
 			<Icon className={styles.logo} name={'logo'} />
@@ -9,5 +10,3 @@ const Logo = () => {
 		</a>
 	);
 };
-
-export default Logo;

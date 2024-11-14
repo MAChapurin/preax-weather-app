@@ -1,13 +1,10 @@
-import { useWeather } from '../../hooks/useWeatherContext';
-import CardList from '../card-list';
-import CityCard from '../city-card';
-import Tab from '../tab';
-import styles from './styles.module.css';
-import { Skeleton } from '../skeleton/Skeleton';
-import { ErrorWidget } from '../error-widget/ErrorWidget';
+import { useWeather } from 'hooks';
 import { useEffect } from 'react';
+import { CardList, CityCard, ErrorWidget, Skeleton, Tab } from 'components';
 
-const Main = () => {
+import styles from './styles.module.css';
+
+export const Main = () => {
 	const {
 		cityCardData,
 		todayDetailsData,
@@ -37,5 +34,3 @@ const Main = () => {
 		</main>
 	);
 };
-
-export default Main;

@@ -1,7 +1,6 @@
-import { useFavorites } from '../../hooks/useFavoriteContext';
-import { useWeather } from '../../hooks/useWeatherContext';
-import { Skeleton } from '../skeleton/Skeleton';
-import { WeatherCard } from '../weather-card/weatherCard';
+import { useFavorites, useWeather } from 'hooks';
+import { Skeleton, WeatherCard } from 'components';
+
 import styles from './styles.module.css';
 
 export const SearchWidget = ({ getWeather }) => {

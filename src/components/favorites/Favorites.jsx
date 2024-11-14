@@ -1,8 +1,7 @@
-import { WeatherCard } from '../weather-card/weatherCard';
-import { useFavorites } from '../../hooks/useFavoriteContext';
+import { useFavorites } from 'hooks';
+import { Title, WeatherCard } from 'components';
 
 import styles from './styles.module.css';
-import { Title } from '../title/Title';
 
 export const Favorites = ({ getWeather }) => {
 	const { favorites, handlerLike, isLiked, handlerDislike } = useFavorites();

@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { Button } from '../button';
-import { Icon } from '../icon/Icon';
 import { useDebounce } from 'hooks';
-import { Skeleton } from '../skeleton/Skeleton';
+import { Button, Skeleton, Icon } from 'components';
 
 import styles from './styles.module.css';
 

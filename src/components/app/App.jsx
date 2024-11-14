@@ -1,11 +1,9 @@
 import { useEffect } from 'react';
-import { useWeather } from '../../hooks/useWeatherContext';
-import Footer from '../footer';
-import Header from '../header';
-import Main from '../main';
+import { useBackground, useWeather } from 'hooks';
+import { Footer, Header, Main } from 'components';
+import { cn } from 'utils';
+
 import styles from './styles.module.css';
-import { cn } from '../../utils/cn';
-import { useBackground } from '../../hooks/useBackground';
 
 export function App() {
 	const { isDropdownOpen, cityCardData } = useWeather();

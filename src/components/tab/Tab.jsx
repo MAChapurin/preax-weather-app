@@ -1,13 +1,11 @@
 import { useState } from 'react';
-import { TabBar } from '../tab-bar/TabBar';
-import { Slider } from '../slider/Slider';
+import { useWeather } from 'hooks';
+import { Slider, TabBar, ErrorWidget } from 'components';
 import { statisticWeekData, statisticDayData } from '../../data';
 
 import styles from './styles.module.css';
-import { useWeather } from '../../hooks/useWeatherContext';
-import { ErrorWidget } from '../error-widget/ErrorWidget';
 
-const Tab = ({ loading }) => {
+export const Tab = ({ loading }) => {
 	const { dayDetailData, weekData, error, updateWeatherData } = useWeather();
 	const [tab, setTab] = useState(1);
 
@@ -41,5 +39,3 @@ const Tab = ({ loading }) => {
 		</section>
 	);
 };
-
-export default Tab;

@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Icon } from '../icon/Icon';
-
-import { Skeleton } from '../skeleton/Skeleton';
-import { ApiServices } from '../../api/api.services';
-import { ErrorWidget } from '../error-widget/ErrorWidget';
-import { cn, formatTime } from 'utils';
 import { useBackground } from 'hooks';
+import { ErrorWidget, Icon, Skeleton } from 'components';
+import { cn, formatTime } from 'utils';
+
+import { ApiServices } from 'api';
+
 import styles from './styles.module.css';
 
 export const WeatherCard = ({
