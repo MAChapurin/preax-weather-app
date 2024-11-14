@@ -1,29 +1,47 @@
 {
   "files": {
     "main.css": "/preax-weather-app/static/css/main.e1b818bc.css",
-    "main.js": "/preax-weather-app/static/js/main.716da8d7.js",
+    "main.js": "/preax-weather-app/static/js/main.f2afe95c.js",
+    "static/media/bg-day-5.webp": "/preax-weather-app/static/media/bg-day-5.a158a15ca94b75fa4426.webp",
+    "static/media/bg-dark-5.webp": "/preax-weather-app/static/media/bg-dark-5.62eaa9dc808085f3a242.webp",
+    "static/media/bg-day-8.webp": "/preax-weather-app/static/media/bg-day-8.c694c575d83e00887412.webp",
+    "static/media/bg-day-6.webp": "/preax-weather-app/static/media/bg-day-6.28553f717d38914389b4.webp",
+    "static/media/bg-dark-2.webp": "/preax-weather-app/static/media/bg-dark-2.ff0045d713ab0b0766b9.webp",
     "static/media/Raleway-Bold.woff": "/preax-weather-app/static/media/Raleway-Bold.5b5be11238361a418d5c.woff",
     "static/media/Raleway-Regular.woff": "/preax-weather-app/static/media/Raleway-Regular.3037b2778791d46a4a51.woff",
     "static/media/Raleway-Bold.woff2": "/preax-weather-app/static/media/Raleway-Bold.8b42199985e84bbe21f5.woff2",
     "static/media/Raleway-Regular.woff2": "/preax-weather-app/static/media/Raleway-Regular.a9d6a22e554a1d88ce1a.woff2",
+    "static/media/bg-dark-6.webp": "/preax-weather-app/static/media/bg-dark-6.f36414ef77935d0661f6.webp",
+    "static/media/bg-dark-8.webp": "/preax-weather-app/static/media/bg-dark-8.99bdb2bfd47eafe33206.webp",
+    "static/media/bg-day-3.webp": "/preax-weather-app/static/media/bg-day-3.e352a446d02970c39756.webp",
+    "static/media/bg-dark-3.webp": "/preax-weather-app/static/media/bg-dark-3.c339e3f022518e4915e8.webp",
+    "static/media/bg-day-2.webp": "/preax-weather-app/static/media/bg-day-2.f607b510c2b5235ca69d.webp",
+    "static/media/bg-day-4.webp": "/preax-weather-app/static/media/bg-day-4.b79a583011c8b5f05ff6.webp",
     "static/media/humiditydark.svg": "/preax-weather-app/static/media/humiditydark.2ea2c12fc04f8a1fc61b96ffe402ad94.svg",
+    "static/media/bg-dark-4.webp": "/preax-weather-app/static/media/bg-dark-4.6c5a1a6f1b40004e373f.webp",
     "static/media/barometrdark.svg": "/preax-weather-app/static/media/barometrdark.3456a893bf3cd5a1fec424c7f0d42855.svg",
     "static/media/humidity.svg": "/preax-weather-app/static/media/humidity.19cd26283b750e10517f1cd887bb5c7d.svg",
     "static/media/visibilitydark.svg": "/preax-weather-app/static/media/visibilitydark.f833bd2001fb40f2f489d082ec67b258.svg",
+    "static/media/bg-dark-7.webp": "/preax-weather-app/static/media/bg-dark-7.613635421cbdcbd024fe.webp",
+    "static/media/bg-day-7.webp": "/preax-weather-app/static/media/bg-day-7.b81da5df49be64a9fcee.webp",
     "static/media/visibility.svg": "/preax-weather-app/static/media/visibility.a670ab345155a8f5a511cf14ababccb0.svg",
     "static/media/barometr.svg": "/preax-weather-app/static/media/barometr.78df0ac4d2803de2e51afc0507607856.svg",
     "static/media/sunrisedark.svg": "/preax-weather-app/static/media/sunrisedark.3856fc49829b007bcd38915e62177878.svg",
     "static/media/sunsetdark.svg": "/preax-weather-app/static/media/sunsetdark.d273f0d47d9d23800ad23bdb1308f72b.svg",
+    "static/media/bg-day-1.webp": "/preax-weather-app/static/media/bg-day-1.8c96b5d228263f9fbe38.webp",
     "static/media/sunrise.svg": "/preax-weather-app/static/media/sunrise.3b5f3ac637406426c325acb340e8fdfa.svg",
+    "static/media/bg-dark-9.webp": "/preax-weather-app/static/media/bg-dark-9.76a59827589dd4264d73.webp",
     "static/media/sunset.svg": "/preax-weather-app/static/media/sunset.289d6d7bccde36eafa101c03fdf4a2f9.svg",
+    "static/media/bg-dark-1.webp": "/preax-weather-app/static/media/bg-dark-1.4d2376dd3434a7f8d8fb.webp",
+    "static/media/bg-day-9.webp": "/preax-weather-app/static/media/bg-day-9.db93ed16a66082f996e0.webp",
     "static/media/directiondark.svg": "/preax-weather-app/static/media/directiondark.f753cc7974018c0f283c1001af40313f.svg",
     "static/media/direction.svg": "/preax-weather-app/static/media/direction.bc436c1a5c1b394b87f744b3b0d7babf.svg",
     "index.html": "/preax-weather-app/index.html",
     "main.e1b818bc.css.map": "/preax-weather-app/static/css/main.e1b818bc.css.map",
-    "main.716da8d7.js.map": "/preax-weather-app/static/js/main.716da8d7.js.map"
+    "main.f2afe95c.js.map": "/preax-weather-app/static/js/main.f2afe95c.js.map"
   },
   "entrypoints": [
     "static/css/main.e1b818bc.css",
-    "static/js/main.716da8d7.js"
+    "static/js/main.f2afe95c.js"
   ]
 }
