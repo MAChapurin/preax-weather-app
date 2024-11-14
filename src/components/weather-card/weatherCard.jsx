@@ -67,7 +67,7 @@ export const WeatherCard = ({
 		getData();
 	}, [lat, lon]);
 	useEffect(() => {
-		const id = setInterval(updateDate, 500);
+		const id = setInterval(updateDate, 30000);
 		return () => {
 			clearInterval(id);
 		};
@@ -80,7 +80,7 @@ export const WeatherCard = ({
 				<As
 					className={cn(styles.card, className)}
 					style={{
-						backgroundImage: `url("bg/${backgroundImage}")`,
+						backgroundImage: `url("${backgroundImage}")`,
 					}}
 				>
 					<button

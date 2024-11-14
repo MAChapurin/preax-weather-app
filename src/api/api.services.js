@@ -6,7 +6,6 @@ export class ApiServices {
 				`https://nominatim.openstreetmap.org/search.php?q=${query}&format=json&addressdetails=0&&limit=20&lang=ru`
 			);
 			const data = await request.json();
-			// console.log(data);
 			return Array.from(new Set(data.filter(Boolean).map((el) => el.name)));
 		} catch (e) {
 			console.log('failed to search city ', query);
@@ -20,7 +19,6 @@ export class ApiServices {
 				`https://ru.api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric&lang=ru`
 			);
 			const response = await request.json();
-			// console.log('response =>', response);
 			if (Number(response?.cod) >= 400) {
 				throw new Error({ message: 'something go wrong', cod: response?.cod });
 			}
