@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
-import { useWeather } from '../../hooks/useWeatherContext';
-import { useClickOutside } from '../../hooks/useClickOutside';
+
 import Dropdown from '../dropdown';
 import Input from '../input';
+import { useDebounceValue, useClickOutside, useWeather } from 'hooks';
+
 import styles from './styles.module.css';
-import useDebounceValue from '../../hooks/useDebounceValue';
 
 const WeatherSearch = () => {
 	const weatherSearchRef = useRef(null);

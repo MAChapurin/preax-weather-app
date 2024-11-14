@@ -1,7 +1,7 @@
 import { weatherIconsPath } from '../data';
-import formatTime from './formatTime';
+import { formatTime } from 'utils';
 
-const formatCityCardData = (data, cityName) => {
+export const formatCityCardData = (data, cityName) => {
 	const { date, time } = formatTime(
 		Date.now(),
 		(data?.timezone || 10800) * 1000
@@ -29,5 +29,3 @@ const formatCityCardData = (data, cityName) => {
 
 	return template;
 };
-
-export default formatCityCardData;

@@ -11,9 +11,9 @@ import sunsetdark from '../assets/img/cards/sunsetdark.svg';
 import direction from '../assets/img/cards/direction.svg';
 import directiondark from '../assets/img/cards/directiondark.svg';
 import { directions } from '../constants';
-import formatTime from './formatTime';
+import { formatTime } from 'utils';
 
-const formatTodayDetailsData = (data) => {
+export const formatTodayDetailsData = (data) => {
 	const template = [
 		{
 			code: 'humidity',
@@ -140,5 +140,3 @@ const formatTodayDetailsData = (data) => {
 
 	return template;
 };
-
-export default formatTodayDetailsData;

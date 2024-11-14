@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '../button';
 import { Icon } from '../icon/Icon';
-import styles from './styles.module.css';
-import useDebounce from '../../hooks/useDebounce';
+import { useDebounce } from 'hooks';
 import { Skeleton } from '../skeleton/Skeleton';
+
+import styles from './styles.module.css';
 
 export const Slider = ({ data, vissible, loading }) => {
 	const [index, setIndex] = useState(0);

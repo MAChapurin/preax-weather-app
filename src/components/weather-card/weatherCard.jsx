@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Icon } from '../icon/Icon';
 
-import styles from './styles.module.css';
 import { Skeleton } from '../skeleton/Skeleton';
 import { ApiServices } from '../../api/api.services';
 import { ErrorWidget } from '../error-widget/ErrorWidget';
-import formatTime from '../../utils/formatTime';
-import { cn } from '../../utils/cn';
-import { useBackground } from '../../hooks/useBackground';
+import { cn, formatTime } from 'utils';
+import { useBackground } from 'hooks';
+import styles from './styles.module.css';
 
 export const WeatherCard = ({
 	As = 'li',

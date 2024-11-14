@@ -1,2 +1,9 @@
 export { useSyncLocalStorageSync } from './useLocalStorageSync';
 export { useBackground } from './useBackground';
+export { useClickOutside } from './useClickOutside';
+export { useDebounce } from './useDebounce';
+export { useDebounceValue } from './useDebounceValue';
+export { useFavorites } from './useFavoriteContext';
+export { useFetch } from './useFetch';
+export { useTheme } from './useThemeContext';
+export { useWeather } from './useWeatherContext';

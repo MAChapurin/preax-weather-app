@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
 import WeatherContext from './weatherContext';
 import { cityCardMock, weatherMock } from '../data';
-import formatTodayDetailsData from '../utils/formatTodayDetailsData';
-import formatCityCardData from '../utils/formatCityCardData';
-import formatDayWeather from '../utils/formatDayWeather';
-import formatWeekData from '../utils/formatWeekData';
-import { getCityName } from '../utils/getCityName';
+
 import { ApiServices } from '../api/api.services';
+import {
+	formatCityCardData,
+	formatDayWeather,
+	formatTodayDetailsData,
+	formatWeekData,
+	getCityName,
+} from 'utils';
 
 const STORAGE_KEYS = {
 	defaultCity: 'defaultCityKey',

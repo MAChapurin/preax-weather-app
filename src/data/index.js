@@ -1,5 +1,4 @@
-import formatTodayDetailsData from '../utils/formatTodayDetailsData';
-import formatCityCardData from '../utils/formatCityCardData';
+import { formatCityCardData, formatTodayDetailsData } from 'utils';
 
 export const weatherIconsPath = 'weather-icons/';
 

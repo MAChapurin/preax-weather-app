@@ -56,6 +56,6 @@ export function useBackground(weather) {
 		case weather.includes('морось') ? weather : '':
 			return isDarkTheme ? bg_dark_9 : bg_day_9;
 		default:
-			return '';
+			return isDarkTheme ? bg_dark_2 : bg_day_2;
 	}
 }
