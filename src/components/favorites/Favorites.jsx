@@ -1,4 +1,4 @@
-import { useFavorites } from 'hooks';
+import { useFavorites } from 'store';
 import { Title, WeatherCard } from 'components';
 
 import styles from './styles.module.css';

@@ -1,7 +1,6 @@
 import styles from './styles.module.css';
 
 export const CityCard = ({ data }) => {
-	console.log(data);
 	return (
 		<div className={styles['panel-info']}>
 			<div className={styles['panel-info__row']}>

@@ -1,4 +1,4 @@
-import { useTheme } from './useThemeContext';
+import { useTheme } from 'store';
 
 import {
 	bg_dark_1,

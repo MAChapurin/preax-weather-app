@@ -1,4 +1,5 @@
-import { useFavorites, useWeather } from 'hooks';
+import { useFavorites } from 'store';
+import { useWeather } from 'hooks';
 import { Skeleton, WeatherCard } from 'components';
 
 import styles from './styles.module.css';

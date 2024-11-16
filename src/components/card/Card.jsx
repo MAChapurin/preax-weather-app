@@ -1,4 +1,4 @@
-import { useTheme } from 'hooks';
+import { useTheme } from 'store';
 import { ProgressBar } from 'components';
 import { Image } from './Image';
 

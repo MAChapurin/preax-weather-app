@@ -1,5 +1,6 @@
 import { Icon } from '../icon/Icon';
-import { useTheme, useWeather } from 'hooks';
+import { useWeather } from 'hooks';
+import { useTheme } from 'store';
 import { cn } from 'utils';
 
 import styles from './styles.module.css';
@@ -18,7 +19,7 @@ export function Switch() {
 				className={styles.checkbox}
 				type='checkbox'
 				checked={isDarkTheme}
-				onChange={() => setIsDarkTheme((prev) => !prev)}
+				onChange={() => setIsDarkTheme(!isDarkTheme)}
 			/>
 			<Icon className={styles.day} name={'sun'} />
 			<Icon className={styles.night} name={'moon'} />
