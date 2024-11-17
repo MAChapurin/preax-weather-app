@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { useBackground, useWeather } from 'hooks';
+import { useWeather } from 'store';
+import { useBackground } from 'hooks';
 import { Footer, Header, Main } from 'components';
 import { cn } from 'utils';
 

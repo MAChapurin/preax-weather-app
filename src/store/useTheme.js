@@ -9,7 +9,7 @@ const initialState = localStorage.getItem(THEME_KEY)
 let isDarkTheme = initialState;
 const subscribers = new Set();
 
-const callAllSubscribers = () => {
+const emitChange = () => {
 	subscribers.forEach((callback) => {
 		callback();
 	});
@@ -27,7 +27,7 @@ const themeStore = {
 
 	setIsDarkTheme(booleanValue) {
 		isDarkTheme = booleanValue;
-		callAllSubscribers();
+		emitChange();
 	},
 };
 

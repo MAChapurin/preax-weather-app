@@ -1,4 +1,4 @@
-import { useWeather } from 'hooks';
+import { useWeather } from 'store';
 import { Logo, Switch, WeatherSearch } from 'components';
 import { cn } from 'utils';
 

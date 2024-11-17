@@ -1,8 +1,8 @@
-import { useFavorites } from 'store';
-import { useWeather } from 'hooks';
+import { useFavorites, useWeather  } from 'store';
 import { Skeleton, WeatherCard } from 'components';
 
 import styles from './styles.module.css';
+
 
 export const SearchWidget = ({ getWeather }) => {
 	const { citySearchResult, isCitySearching, error } = useWeather();

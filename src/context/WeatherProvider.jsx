@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import WeatherContext from './weatherContext';
 import { cityCardMock, weatherMock } from '../data';
 
-import { ApiServices } from '../api/api.services';
+import { ApiServices } from 'api';
 import {
 	formatCityCardData,
 	formatDayWeather,
@@ -102,8 +102,8 @@ export const WeatherProvider = ({ children, ...props }) => {
 			// console.log('weatherData2 =>', weatherData);
 			//==============================================================
 			//На этом участке режим частичных ошибок, закоментировать для нормальной работы
-			const random = Math.random();
-			if (random < 0.2) throw new Error('Shit is hapening sometime');
+			// const random = Math.random();
+			// if (random < 0.2) throw new Error('Shit is hapening sometime');
 			//==============================================================
 			const cityName = getCityName(cityData[0]);
 			setCityCardData(formatCityCardData(weatherData, cityName));

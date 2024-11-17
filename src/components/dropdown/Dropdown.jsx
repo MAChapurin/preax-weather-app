@@ -1,4 +1,4 @@
-import { useWeather } from 'hooks';
+import { useFavorites, useWeather } from 'store';
 import {
 	Favorites,
 	HistoryList,
@@ -8,7 +8,7 @@ import {
 } from 'components';
 
 import styles from './styles.module.css';
-import { useFavorites } from 'store';
+
 
 export const Dropdown = ({
 	isCitySearching,

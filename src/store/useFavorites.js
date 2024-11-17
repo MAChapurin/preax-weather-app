@@ -8,16 +8,14 @@ const initialState = favoritesFromLocalStorage
 let favorites = initialState;
 const subscribers = new Set();
 
-const callAllSubscribers = () => {
+const emitChange = () => {
 	subscribers.forEach((callback) => {
 		callback();
 	});
 };
 
 const favoritesStore = {
-	getSnapshot() {
-		return favorites;
-	},
+	getSnapshot: () => favorites,
 
 	subscribe(callback) {
 		subscribers.add(callback);
@@ -27,13 +25,13 @@ const favoritesStore = {
 	handlerLike(item) {
 		if (favorites.length < 5) {
 			favorites = [...favorites, item];
-			callAllSubscribers();
+			emitChange();
 		}
 	},
 
 	handlerDislike(id) {
 		favorites = favorites.filter((el) => el.osm_id !== id);
-		callAllSubscribers();
+		emitChange();
 	},
 
 	isLiked(id) {

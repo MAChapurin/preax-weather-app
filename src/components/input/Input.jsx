@@ -1,6 +1,6 @@
 import { useRef } from 'react';
-import { useWeather } from 'hooks';
 import { Icon } from 'components';
+import { useWeather } from 'store';
 import { cn } from 'utils';
 
 import styles from './styles.module.css';

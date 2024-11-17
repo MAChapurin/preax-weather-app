@@ -1,8 +1,8 @@
-import { useWeather } from 'hooks';
 import { Icon, Title, WeatherCard } from 'components';
+import { useFavorites, useWeather  } from 'store';
 
 import styles from './styles.module.css';
-import { useFavorites } from 'store';
+
 
 export const HistoryList = ({ getWeather }) => {
 	const { history, clearHistory } = useWeather();

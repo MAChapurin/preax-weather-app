@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { useWeather } from 'hooks';
 import { Skeleton, WeatherCard } from 'components';
+import { useWeather } from 'store';
 
 import { ApiServices } from 'api';
 

@@ -1,9 +1,9 @@
-import { Icon } from '../icon/Icon';
-import { useWeather } from 'hooks';
-import { useTheme } from 'store';
+import { Icon } from 'components';
+import { useTheme, useWeather } from 'store';
 import { cn } from 'utils';
 
 import styles from './styles.module.css';
+
 
 export function Switch() {
 	const { isDropdownOpen } = useWeather();

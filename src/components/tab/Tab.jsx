@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useWeather } from 'hooks';
+import { useWeather } from 'store';
 import { Slider, TabBar, ErrorWidget } from 'components';
 import { statisticWeekData, statisticDayData } from '../../data';
 

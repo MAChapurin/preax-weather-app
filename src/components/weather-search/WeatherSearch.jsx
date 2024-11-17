@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { useDebounceValue, useClickOutside, useWeather } from 'hooks';
+import { useWeather } from 'store';
+import { useDebounceValue, useClickOutside } from 'hooks';
 import { Dropdown, Input } from 'components';
 
 import styles from './styles.module.css';

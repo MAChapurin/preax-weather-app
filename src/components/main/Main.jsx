@@ -1,6 +1,6 @@
-import { useWeather } from 'hooks';
 import { useEffect } from 'react';
 import { CardList, CityCard, ErrorWidget, Skeleton, Tab } from 'components';
+import { useWeather } from 'store';
 
 import styles from './styles.module.css';
 
