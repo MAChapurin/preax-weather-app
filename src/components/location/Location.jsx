@@ -25,7 +25,6 @@ const ErrorResult = () => (
 	<>
 		<h3 className={styles.title}>{TEXT.errorTitle}</h3>
 		<p className={styles.desc}>{TEXT.errorMessage1}</p>
-		<p className={styles.desc}>{TEXT.errorMessage1}</p>
 	</>
 );
 
@@ -36,6 +35,8 @@ export const Location = ({ getWeather }) => {
 	const [isFailed, setIsFailed] = useState(false);
 
 	const { setIsGeoActive, setDefaultCity, STORAGE_KEYS } = useWeather();
+
+	// const isAllowedLocation = useGeolocation();
 
 	const isSuccess = city.length > 0 && !isFailed && !isLoading;
 

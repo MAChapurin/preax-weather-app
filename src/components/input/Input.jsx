@@ -20,6 +20,7 @@ export const Input = ({
 
 	const onFocus = (e) => {
 		e.preventDefault();
+		setIsGeoActive(false);
 		handleClick();
 	};
 	return (

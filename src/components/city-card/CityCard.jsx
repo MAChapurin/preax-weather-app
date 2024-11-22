@@ -1,3 +1,4 @@
+import { WEATHER_ICONS } from 'assets/img/weather-icons';
 import styles from './styles.module.css';
 
 export const CityCard = ({ data }) => {
@@ -17,7 +18,7 @@ export const CityCard = ({ data }) => {
 				>
 					<img
 						className={styles['panel-info__img']}
-						src={`${data.img.src}`}
+						src={`${WEATHER_ICONS[data.img.src]}`}
 						alt={data.img.alt}
 					/>
 					{data.img.alt}

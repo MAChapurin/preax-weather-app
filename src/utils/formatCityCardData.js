@@ -1,3 +1,4 @@
+import { _01d, WEATHER_ICONS } from 'assets/img/weather-icons';
 import { weatherIconsPath } from '../data';
 import { formatTime } from 'utils';
 
@@ -22,7 +23,8 @@ export const formatCityCardData = (data, cityName) => {
 	if (!data) return template;
 
 	template.temp = Math.round(data.main.temp) + '°';
-	template.img.src = weatherIconsPath + data.weather[0].icon + '.svg';
+	// template.img.src = weatherIconsPath + data.weather[0].icon + '.svg';
+	template.img.src = data.weather[0].icon;
 	template.img.alt = data.weather[0].description;
 	template.description =
 		'Ощущается как ' + Math.round(data.main.feels_like) + '°';
