@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/preax-weather-app/static/css/main.47dc315b.css",
-    "main.js": "/preax-weather-app/static/js/main.e9c8ef92.js",
+    "main.js": "/preax-weather-app/static/js/main.8926eed1.js",
     "static/media/bg-day-5.webp": "/preax-weather-app/static/media/bg-day-5.a158a15ca94b75fa4426.webp",
     "static/media/bg-dark-5.webp": "/preax-weather-app/static/media/bg-dark-5.62eaa9dc808085f3a242.webp",
     "static/media/bg-day-8.webp": "/preax-weather-app/static/media/bg-day-8.c694c575d83e00887412.webp",
@@ -56,10 +56,10 @@
     "static/media/50d.svg": "/preax-weather-app/static/media/50d.453f78d7e4095745a4d487e6cee247b7.svg",
     "index.html": "/preax-weather-app/index.html",
     "main.47dc315b.css.map": "/preax-weather-app/static/css/main.47dc315b.css.map",
-    "main.e9c8ef92.js.map": "/preax-weather-app/static/js/main.e9c8ef92.js.map"
+    "main.8926eed1.js.map": "/preax-weather-app/static/js/main.8926eed1.js.map"
   },
   "entrypoints": [
     "static/css/main.47dc315b.css",
-    "static/js/main.e9c8ef92.js"
+    "static/js/main.8926eed1.js"
   ]
 }
