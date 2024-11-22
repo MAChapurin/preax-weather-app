@@ -3,6 +3,7 @@ import { useDebounce } from 'hooks';
 import { Button, Skeleton, Icon } from 'components';
 
 import styles from './styles.module.css';
+import { WEATHER_ICONS } from 'assets/img/weather-icons';
 
 export const Slider = ({ data, vissible, loading }) => {
 	const [index, setIndex] = useState(0);
@@ -80,7 +81,7 @@ export const Slider = ({ data, vissible, loading }) => {
 										</span>
 										<img
 											className={styles['statistic-list__icon']}
-											src={`weather-icons/${item.icon}.svg`}
+											src={WEATHER_ICONS[item.icon]}
 											alt='Иконка погоды'
 										/>
 										{item.temp && (
