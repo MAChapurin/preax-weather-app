@@ -71,6 +71,7 @@
 .card__desc {
 	font-size: 12px;
 	line-height: 16px;
+	text-align: center;
 	transition: color 0.5s;
 }
 
