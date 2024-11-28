@@ -11,20 +11,38 @@
 
 .logoMini {
 	display: none;
-	transition: width 0.3s, height 0.3s;
+	transition: width 0.3s, height 0.3s, fill 0.5s;
 }
 
 .logo [datatype='theme'] {
 	transition: fill 0.5s;
 }
 
-.logo path[datatype='theme'],
-.logoMini path[datatype='theme'] {
+.logoMini path {
 	fill: var(--light-filled-900);
 }
 
-[data-theme='dark'] .logo path[datatype='theme'],
-[data-theme='dark'] .logoMini path[datatype='theme'] {
+.logoMini path[datatype='first-letter'] {
+	fill: var(--light-filled-100);
+}
+
+[data-theme='dark'] .logoMini path[datatype='first-letter'] {
+	fill: var(--dark-filled-900);
+}
+
+.logoMini path[datatype='second-letter'] {
+	fill: var(--light-filled-900);
+}
+
+[data-theme='dark'] .logoMini path[datatype='second-letter'] {
+	fill: var(--dark-filled-700);
+}
+
+.logo path[datatype='theme'] {
+	fill: var(--light-filled-100);
+}
+
+[data-theme='dark'] .logo path[datatype='theme'] {
 	fill: var(--dark-filled-700);
 }
 
