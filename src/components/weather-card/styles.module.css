@@ -74,6 +74,10 @@
 	text-align: right;
 }
 
+.status:first-letter {
+	text-transform: uppercase;
+}
+
 .supportBtn {
 	border-radius: 8px;
 	padding: 34px 16px;
@@ -99,17 +103,26 @@
 }
 
 .supportBtn.checked svg path {
-	stroke: var(--clr-neutral-5);
-	fill: var(--clr-neutral-5);
+	stroke: var(--light-filled-100);
+	fill: var(--light-filled-100);
 }
 
 .supportBtn:disabled svg path {
-	stroke: var(--clr-neutral-6);
+	stroke: var(--light-filled-500);
+}
+
+[data-theme='dark'] .supportBtn:disabled svg path {
+	stroke: var(--dark-tone-400);
 }
 
 .supportBtn:hover svg path {
-	stroke: var(--clr-neutral-1);
-	fill: var(--clr-neutral-1);
+	stroke: var(--light-filled-400);
+	fill: var(--light-filled-400);
+}
+
+[data-theme='dark'] .supportBtn:hover svg path {
+	stroke: var(--dark-filled-600);
+	fill: var(--dark-filled-600);
 }
 
 @keyframes heightAnimate {

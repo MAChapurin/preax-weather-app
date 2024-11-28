@@ -5,6 +5,7 @@ import { Image } from './Image';
 import styles from './styles.module.css';
 
 export const Card = ({ item, className = '' }) => {
+	// console.log(item);
 	const { isDarkTheme } = useTheme();
 	return (
 		<li className={`${styles['card']} ${className}`}>

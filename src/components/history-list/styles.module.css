@@ -9,7 +9,7 @@
 	justify-content: space-between;
 	align-items: center;
 	font-weight: 700;
-	transition: color 0.5s;
+	transition: color 0.3s;
 }
 
 [data-theme='dark'] .header {
@@ -31,13 +31,14 @@
 .placeholder {
 	font-size: 20px;
 	line-height: 24px;
-	color: var(--clr-neutral-5);
+	color: var(--light-filled-700);
 }
 
 .icon {
 	width: 24px;
 	height: 24px;
-	color: var(--clr-neutral-5);
+	color: var(--light-filled-700);
+	transition: color 0.3s;
 }
 
 .button {
@@ -46,10 +47,15 @@
 	border: none;
 	outline: none;
 	cursor: pointer;
+	transition: color 0.5s;
 }
 
 .button:disabled svg {
-	color: #8a8a8a;
+	color: var(--light-filled-500);
+}
+
+[data-theme='dark'] .button:disabled svg {
+	color: var(--dark-filled-400);
 }
 
 .historyList {
@@ -88,5 +94,15 @@
 		gap: 8px;
 		font-size: 14px;
 		line-height: 16px;
+	}
+}
+
+@media (hover: hover) {
+	.button:hover .icon {
+		color: var(--light-filled-900);
+	}
+
+	[data-theme='dark'] .button:hover .icon {
+		color: var(--dark-filled-900);
 	}
 }

@@ -1,6 +1,5 @@
 .wrapper {
 	position: absolute;
-	/* display: grid; */
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
@@ -14,10 +13,13 @@
 	padding: 16px;
 	overflow: auto;
 	transition: background-color 0.5s, max-height 0.5s;
+	scrollbar-width: thin;
+	scrollbar-color: var(--light-filled-700) transparent;
 }
 
 [data-theme='dark'] .wrapper {
 	background-color: var(--dark-tone-100);
+	scrollbar-color: var(--dark-filled-700) transparent;
 }
 
 @media (max-width: 699px) {

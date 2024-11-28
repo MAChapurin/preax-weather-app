@@ -102,7 +102,7 @@ export const formatTodayDetailsData = (data) => {
 				}
 				break;
 			case 'visibility':
-				item.value = Math.round(data.visibility / 1000);
+				item.value = data.visibility ? Math.round(data.visibility / 1000) : 10;
 				break;
 			case 'sunrise':
 				const sunriseStats = formatTime(
