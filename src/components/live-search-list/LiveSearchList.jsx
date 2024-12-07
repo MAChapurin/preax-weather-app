@@ -23,8 +23,16 @@ export const LifeSearchList = ({ value, setValue }) => {
 
 	const nodeCityInput = document.querySelector('input[name="city"]');
 
+	const keyCashForSessionStorage = 'CitiesByQuery';
+	const cache = new Map();
+	// JSON.parse(sessionStorage.getItem(keyCashForSessionStorage))
+
 	const getCities = async (query) => {
-		const citiesResult = await ApiServices.getCitiesByQuery(query);
+		const dataFromCache = cache.get(query);
+		const citiesResult = dataFromCache
+			? dataFromCache
+			: await ApiServices.getCitiesByQuery(query);
+		if (!dataFromCache) cache.set(query, citiesResult);
 		setCities(citiesResult);
 	};
 
@@ -40,6 +48,10 @@ export const LifeSearchList = ({ value, setValue }) => {
 	useEffect(() => {
 		getCities(value);
 	}, [value]);
+
+	useEffect(() => {
+		sessionStorage.setItem(keyCashForSessionStorage, JSON.stringify(cache));
+	}, [cache.length]);
 
 	return (
 		<div>

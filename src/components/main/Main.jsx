@@ -15,9 +15,9 @@ export const Main = () => {
 		setStartData,
 	} = useWeather();
 	useEffect(() => {
+		console.log('setStartData');
 		setStartData();
 	}, []);
-	console.log(cityCardData);
 	return (
 		<main>
 			{error && <ErrorWidget variant={'big'} cb={updateWeatherData} />}

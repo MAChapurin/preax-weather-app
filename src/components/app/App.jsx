@@ -21,16 +21,6 @@ export function App() {
 		};
 	}, [isDropdownOpen]);
 
-	useEffect(() => {
-		document.addEventListener(
-			'focus',
-			(e) => {
-				console.log(e.target);
-			},
-			[]
-		);
-	});
-
 	return (
 		<div
 			className='app'

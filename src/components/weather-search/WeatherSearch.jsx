@@ -18,7 +18,7 @@ export const WeatherSearch = () => {
 		citySearchResult,
 		setCitySearchResult,
 		getWeekWeatherData,
-		getWeatherData2,
+		getWeatherData,
 		setLastCity,
 	} = useWeather();
 
@@ -50,7 +50,7 @@ export const WeatherSearch = () => {
 	const handleGetWeatherByName = (lat, lon, name) => {
 		setError(null);
 		setLastCity({ lat, lon, name });
-		getWeatherData2(name);
+		getWeatherData(name);
 		getWeekWeatherData(lat, lon);
 		setIsDropdownOpen(false);
 		setValue('');
