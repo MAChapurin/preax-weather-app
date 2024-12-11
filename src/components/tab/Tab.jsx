@@ -5,8 +5,9 @@ import { statisticWeekData, statisticDayData } from '../../data';
 
 import styles from './styles.module.css';
 
-export const Tab = ({ loading }) => {
-	const { dayDetailData, weekData, error, updateWeatherData } = useWeather();
+export const Tab = () => {
+	const { dayDetailData, weekData, error, updateWeatherData, loadingWeek } =
+		useWeather();
 	const [tab, setTab] = useState(1);
 
 	return (
@@ -17,12 +18,12 @@ export const Tab = ({ loading }) => {
 					<Slider
 						vissible={tab === 1 ? true : false}
 						data={dayDetailData ?? statisticDayData}
-						loading={loading}
+						loading={loadingWeek}
 					/>
 					<Slider
 						vissible={tab === 2 ? true : false}
 						data={weekData ?? statisticWeekData}
-						loading={loading}
+						loading={loadingWeek}
 					/>
 				</>
 			)}

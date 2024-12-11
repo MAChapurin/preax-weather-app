@@ -9,6 +9,7 @@ import {
 	formatWeekData,
 	getCityName,
 } from 'utils';
+import { useDebounceValue } from 'hooks';
 
 const subscribers = new Set();
 
@@ -40,6 +41,7 @@ const initialDefaultCityState = defaultCityData
 	? JSON.parse(defaultCityData)
 	: moscow;
 
+let value = '';
 let error = null;
 let loadingDetail = false;
 let loadingWeek = false;
@@ -61,6 +63,7 @@ const weatherStore = {
 		return () => subscribers.delete(callback);
 	},
 	//state====================================
+	getValue: () => value,
 	getError: () => error,
 	getLoadingDetail: () => loadingDetail,
 	getLoadingWeek: () => loadingWeek,
@@ -77,6 +80,10 @@ const weatherStore = {
 	getIsGeoActive: () => isGeoActive,
 	//===========================================
 	//setState===================================
+	setValue(newValue) {
+		value = newValue;
+		emitChange();
+	},
 	setError(value) {
 		error = value;
 		emitChange();
@@ -138,6 +145,7 @@ const weatherStore = {
 export const useWeather = () => {
 	const {
 		subscribe,
+		getValue,
 		getError,
 		getLoadingDetail,
 		getLoadingWeek,
@@ -152,6 +160,7 @@ export const useWeather = () => {
 		getLastCity,
 		getDefaultCity,
 		getIsGeoActive,
+		setValue,
 		setError,
 		setLoadingDetail,
 		setLoadingWeek,
@@ -167,6 +176,7 @@ export const useWeather = () => {
 		setDefaultCity,
 		setIsGeoActive,
 	} = weatherStore;
+	const value = useSyncExternalStore(subscribe, getValue);
 	const error = useSyncExternalStore(subscribe, getError);
 	const loadingDetail = useSyncExternalStore(subscribe, getLoadingDetail);
 	const loadingWeek = useSyncExternalStore(subscribe, getLoadingWeek);
@@ -181,6 +191,8 @@ export const useWeather = () => {
 	const lastCity = useSyncExternalStore(subscribe, getLastCity);
 	const defaultCity = useSyncExternalStore(subscribe, getDefaultCity);
 	const isGeoActive = useSyncExternalStore(subscribe, getIsGeoActive);
+
+	const debounceValue = useDebounceValue(value);
 
 	useEffect(() => {
 		const storedCities =
@@ -270,64 +282,76 @@ export const useWeather = () => {
 		}
 	};
 
-	const getWeatherData = async (city) => {
-		setLoadingDetail(true);
-		setLoadingWeek(true);
-		try {
-			const cityFromCache = cacheCityData.get(city);
-			const cityData = cityFromCache
-				? cityFromCache
-				: await ApiServices.getCityData(city);
-			if (!cityFromCache) cacheCityData.set(city, cityData);
-
-			const { lat, lon } = cityData[0];
-			const weatherFromCache = cacheWeatherData.get(city);
-			const weatherData = weatherFromCache
-				? weatherFromCache
-				: await ApiServices.getWeatherData(lat, lon);
-			//==============================================================
-			//На этом участке режим частичных ошибок, закоментировать для нормальной работы
-			// const random = Math.random();
-			// if (random < 0.2) throw new Error('Shit is hapening sometime');
-			//==============================================================
-			const cityName = getCityName(cityData[0]);
-			setCityCardData(formatCityCardData(weatherData, cityName));
-			setTodayDetailsData(formatTodayDetailsData(weatherData));
-			return weatherData;
-		} catch (e) {
-			setError(e.message);
-			console.log(e.message);
-		} finally {
-			setLoadingDetail(false);
-			setLoadingWeek(false);
-		}
-	};
-
-	const getWeekWeatherData = async (lat, lon) => {
-		try {
+	const getWeatherData = useCallback(
+		async (city) => {
+			setLoadingDetail(true);
 			setLoadingWeek(true);
-			const keyForCache = `${lat},${lon}`;
-			const dataFromCache = cacheWeatherWeekData.get(keyForCache);
-			const data = dataFromCache
-				? dataFromCache
-				: await ApiServices.getWeekWeatherData(lat, lon);
+			try {
+				const cityFromCache = cacheCityData.get(city);
+				const cityData = cityFromCache
+					? cityFromCache
+					: await ApiServices.getCityData(city);
+				if (!cityFromCache) cacheCityData.set(city, cityData);
 
-			if (!dataFromCache) cacheWeatherWeekData.set(keyForCache, data);
+				const { lat, lon } = cityData[0];
+				const weatherFromCache = cacheWeatherData.get(city);
+				const weatherData = weatherFromCache
+					? weatherFromCache
+					: await ApiServices.getWeatherData(lat, lon);
+				//==============================================================
+				//На этом участке режим частичных ошибок, закоментировать для нормальной работы
+				const random = Math.random();
+				if (random < 0.2) throw new Error('Shit is hapening sometime');
+				//==============================================================
+				const cityName = getCityName(cityData[0]);
+				setCityCardData(formatCityCardData(weatherData, cityName));
+				setTodayDetailsData(formatTodayDetailsData(weatherData));
+				return weatherData;
+			} catch (e) {
+				setError(e.message);
+				console.log(e.message);
+			} finally {
+				setLoadingDetail(false);
+				setLoadingWeek(false);
+			}
+		},
+		[
+			setCityCardData,
+			setError,
+			setLoadingDetail,
+			setLoadingWeek,
+			setTodayDetailsData,
+		]
+	);
 
-			setWeekData(
-				formatWeekData(data.list, data.city.timezone).length > 5
-					? formatWeekData(data.list, data.city.timezone).slice(1)
-					: formatWeekData(data.list, data.city.timezone)
-			);
+	const getWeekWeatherData = useCallback(
+		async (lat, lon) => {
+			try {
+				setLoadingWeek(true);
+				const keyForCache = `${lat},${lon}`;
+				const dataFromCache = cacheWeatherWeekData.get(keyForCache);
+				const data = dataFromCache
+					? dataFromCache
+					: await ApiServices.getWeekWeatherData(lat, lon);
 
-			setDayDetailData(formatDayWeather(data.list, data.city.timezone));
-		} catch (error) {
-			setError(error.message);
-			console.log(error.message);
-		} finally {
-			setLoadingWeek(false);
-		}
-	};
+				if (!dataFromCache) cacheWeatherWeekData.set(keyForCache, data);
+
+				setWeekData(
+					formatWeekData(data.list, data.city.timezone).length > 5
+						? formatWeekData(data.list, data.city.timezone).slice(1)
+						: formatWeekData(data.list, data.city.timezone)
+				);
+
+				setDayDetailData(formatDayWeather(data.list, data.city.timezone));
+			} catch (error) {
+				setError(error.message);
+				console.log(error.message);
+			} finally {
+				setLoadingWeek(false);
+			}
+		},
+		[setDayDetailData, setError, setLoadingWeek, setWeekData]
+	);
 
 	const update = (lat, lon, name) => {
 		setError(null);
@@ -350,7 +374,30 @@ export const useWeather = () => {
 		}
 	}, []);
 
+	const getWeather = useCallback(
+		(lat, lon, name) => {
+			setError(null);
+			setLastCity({ lat, lon, name });
+			getWeatherData(name);
+			getWeekWeatherData(lat, lon);
+			setIsDropdownOpen(false);
+			setValue('');
+			setCitySearchResult('');
+		},
+		[
+			getWeatherData,
+			getWeekWeatherData,
+			setCitySearchResult,
+			setError,
+			setIsDropdownOpen,
+			setLastCity,
+			setValue,
+		]
+	);
+
 	return {
+		value,
+		debounceValue,
 		error,
 		loadingDetail,
 		setLoadingDetail,
@@ -361,6 +408,7 @@ export const useWeather = () => {
 		citySearchResult,
 		dayDetailData,
 		weekData,
+		setValue,
 		setError,
 		setCitySearchResult,
 		setIsDropdownOpen,
@@ -379,5 +427,6 @@ export const useWeather = () => {
 		setIsGeoActive,
 		STORAGE_KEYS,
 		setStartData,
+		getWeather,
 	};
 };

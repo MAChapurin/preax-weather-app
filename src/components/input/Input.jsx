@@ -5,30 +5,58 @@ import { cn } from 'utils';
 
 import styles from './styles.module.css';
 
-export const Input = ({
-	handleChange,
-	handleClick,
-	handleSubmit,
-	value,
-	handleClear,
-}) => {
-	const { isDropdownOpen, setIsGeoActive } = useWeather();
+export const Input = () => {
+	const {
+		isDropdownOpen,
+		setIsGeoActive,
+		value,
+		setValue,
+		setCitySearchResult,
+		setIsDropdownOpen,
+		getCityData,
+		setError,
+	} = useWeather();
+
 	const inputRef = useRef(null);
-	const handleGeo = () => {
+
+	const onGeo = () => {
 		setIsGeoActive(true);
+	};
+
+	const onSubmit = (e) => {
+		e.preventDefault();
+		if (value) getCityData(value);
+	};
+
+	const onClick = () => {
+		setIsDropdownOpen(true);
 	};
 
 	const onFocus = (e) => {
 		e.preventDefault();
 		setIsGeoActive(false);
-		handleClick();
+		onClick();
+	};
+
+	const onClear = () => {
+		setValue('');
+		setCitySearchResult('');
+	};
+
+	const onChange = (e) => {
+		setError(null);
+		setCitySearchResult('');
+		const newValue = e.target.value;
+		if (!/[A-Za-z]/g.test(newValue)) {
+			setValue(newValue);
+		}
 	};
 	return (
 		<form
 			className={cn(styles.form, {
 				[styles.openDropdown]: isDropdownOpen,
 			})}
-			onSubmit={handleSubmit}
+			onSubmit={onSubmit}
 		>
 			<input
 				ref={inputRef}
@@ -37,23 +65,23 @@ export const Input = ({
 				className={styles.input}
 				name='city'
 				value={value}
-				onChange={handleChange}
+				onChange={onChange}
 				placeholder='Поиск по городу'
 				autoComplete='off'
-				onClick={handleClick}
+				onClick={onClick}
 			/>
 			<button
 				className={cn(styles.button, {
 					[styles.pointer]: value,
 				})}
-				onClick={handleClear}
+				onClick={onClear}
 				type='button'
 			>
 				<Icon name={value ? 'clear' : 'search'} />
 			</button>
 			<button
-				onFocus={handleGeo}
-				onClick={handleGeo}
+				onFocus={onGeo}
+				onClick={onGeo}
 				type='button'
 				className={cn(styles.buttonGeo)}
 			>

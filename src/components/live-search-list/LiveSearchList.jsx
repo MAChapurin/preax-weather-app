@@ -3,6 +3,7 @@ import { Title } from 'components';
 import { ApiServices } from 'api';
 
 import styles from './styles.module.css';
+import { useWeather } from 'store';
 
 const getFormatString = (str1, str2) => {
 	if (str1.toLowerCase().includes(str2)) {
@@ -18,10 +19,11 @@ const getFormatString = (str1, str2) => {
 	return str1;
 };
 
-export const LifeSearchList = ({ value, setValue }) => {
+export const LifeSearchList = () => {
 	const [cities, setCities] = useState([]);
-
+	const { debounceValue, setValue } = useWeather();
 	const nodeCityInput = document.querySelector('input[name="city"]');
+	const value = debounceValue;
 
 	const keyCashForSessionStorage = 'CitiesByQuery';
 	const cache = new Map();

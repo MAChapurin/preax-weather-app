@@ -23,7 +23,7 @@ export function App() {
 
 	return (
 		<div
-			className='app'
+			className={styles.app}
 			style={{
 				backgroundImage: `url("${backgroundImage}")`,
 			}}

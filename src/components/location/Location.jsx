@@ -28,15 +28,14 @@ const ErrorResult = () => (
 	</>
 );
 
-export const Location = ({ getWeather }) => {
+export const Location = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [coords, setCoords] = useState({});
 	const [city, setCity] = useState('');
 	const [isFailed, setIsFailed] = useState(false);
 
-	const { setIsGeoActive, setDefaultCity, STORAGE_KEYS } = useWeather();
-
-	// const isAllowedLocation = useGeolocation();
+	const { setIsGeoActive, setDefaultCity, STORAGE_KEYS, getWeather } =
+		useWeather();
 
 	const isSuccess = city.length > 0 && !isFailed && !isLoading;
 

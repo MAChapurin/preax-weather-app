@@ -1,7 +1,12 @@
 import { WEATHER_ICONS } from 'assets/img/weather-icons';
 import styles from './styles.module.css';
+import { useWeather } from 'store';
+import { Skeleton } from 'components';
 
-export const CityCard = ({ data }) => {
+export const CityCard = () => {
+	const { cityCardData, loadingDetail } = useWeather();
+	const data = cityCardData;
+	if (loadingDetail) return <Skeleton variant={'detail'} />;
 	return (
 		<div className={styles['panel-info']}>
 			<div className={styles['panel-info__row']}>

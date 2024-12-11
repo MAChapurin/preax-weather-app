@@ -1,11 +1,10 @@
 import { Icon, Title, WeatherCard } from 'components';
-import { useFavorites, useWeather  } from 'store';
+import { useFavorites, useWeather } from 'store';
 
 import styles from './styles.module.css';
 
-
-export const HistoryList = ({ getWeather }) => {
-	const { history, clearHistory } = useWeather();
+export const HistoryList = () => {
+	const { history, clearHistory, getWeather } = useWeather();
 	const { favorites, isLiked, handlerDislike, handlerLike } = useFavorites();
 
 	return (

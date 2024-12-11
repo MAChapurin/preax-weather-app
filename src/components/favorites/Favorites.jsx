@@ -2,9 +2,12 @@ import { useFavorites } from 'store';
 import { Title, WeatherCard } from 'components';
 
 import styles from './styles.module.css';
+import { useWeather } from 'store';
 
-export const Favorites = ({ getWeather }) => {
+export const Favorites = () => {
 	const { favorites, handlerLike, isLiked, handlerDislike } = useFavorites();
+	const { getWeather } = useWeather();
+	console.log('render Favorites');
 	return (
 		<div>
 			{favorites.length > 0 && (

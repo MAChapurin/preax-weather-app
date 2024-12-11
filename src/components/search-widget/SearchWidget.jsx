@@ -1,11 +1,10 @@
-import { useFavorites, useWeather  } from 'store';
+import { useFavorites, useWeather } from 'store';
 import { Skeleton, WeatherCard } from 'components';
 
 import styles from './styles.module.css';
 
-
-export const SearchWidget = ({ getWeather }) => {
-	const { citySearchResult, isCitySearching, error } = useWeather();
+export const SearchWidget = () => {
+	const { citySearchResult, isCitySearching, error, getWeather } = useWeather();
 	const { favorites, isLiked, handlerDislike, handlerLike } = useFavorites();
 	return (
 		<>

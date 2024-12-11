@@ -48,34 +48,3 @@ svg {
 	outline: none;
 	background-color: transparent;
 }
-
-.app {
-	display: flex;
-	padding: var(--std-offset-app);
-	margin: 0 auto;
-	min-width: var(--min-app-container);
-	min-height: 100dvh;
-	background: center no-repeat;
-	background-size: cover;
-	background-color: var(--light-filled-700);
-	background-attachment: fixed;
-	align-items: center;
-	transition: background-color 0.5s, background 0.5s, background-image 0.5s,
-		padding 0.5s;
-}
-
-[data-theme='dark'] .app {
-	background-color: var(--dark-filled-300);
-}
-
-@media (max-width: 1279.98px) {
-	.app {
-		min-width: unset;
-	}
-}
-
-@media (max-width: 699.98px) {
-	.app {
-		padding: var(--std-offset-xs);
-	}
-}

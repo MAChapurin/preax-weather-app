@@ -9,16 +9,20 @@ import {
 
 import styles from './styles.module.css';
 
-
-export const Dropdown = ({
-	isCitySearching,
-	citySearchResult,
-	getWeather,
-	value,
-	setValue,
-}) => {
+export const Dropdown = () => {
 	const { favorites } = useFavorites();
-	const { error, isGeoActive } = useWeather();
+	const {
+		error,
+		debounceValue,
+		citySearchResult,
+		isCitySearching,
+		isGeoActive,
+		isDropdownOpen,
+	} = useWeather();
+
+	if (!isDropdownOpen) return null;
+
+	const value = debounceValue;
 
 	const isSearchProcess = citySearchResult || isCitySearching || error;
 
@@ -40,13 +44,11 @@ export const Dropdown = ({
 
 	return (
 		<div className={styles.wrapper}>
-			{isShowedLiveSearch && (
-				<LifeSearchList value={value} setValue={setValue} />
-			)}
-			{isShowedSearchWidget && <SearchWidget getWeather={getWeather} />}
-			{isShowedGeo && <Location getWeather={getWeather} />}
-			{isShowedFavorites && <Favorites getWeather={getWeather} />}
-			{isShowedHistory && <HistoryList getWeather={getWeather} />}
+			{isShowedLiveSearch && <LifeSearchList />}
+			{isShowedSearchWidget && <SearchWidget />}
+			{isShowedGeo && <Location />}
+			{isShowedFavorites && <Favorites />}
+			{isShowedHistory && <HistoryList />}
 		</div>
 	);
 };

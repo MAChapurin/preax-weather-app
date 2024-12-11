@@ -1,15 +1,9 @@
 import humidity from '../assets/img/cards/humidity.svg';
-import humiditydark from '../assets/img/cards/humiditydark.svg';
 import barometr from '../assets/img/cards/barometr.svg';
-import barometrdark from '../assets/img/cards/barometrdark.svg';
 import visibility from '../assets/img/cards/visibility.svg';
-import visibilitydark from '../assets/img/cards/visibilitydark.svg';
 import sunrise from '../assets/img/cards/sunrise.svg';
-import sunrisedark from '../assets/img/cards/sunrisedark.svg';
 import sunset from '../assets/img/cards/sunset.svg';
-import sunsetdark from '../assets/img/cards/sunsetdark.svg';
 import direction from '../assets/img/cards/direction.svg';
-import directiondark from '../assets/img/cards/directiondark.svg';
 import { directions } from '../constants';
 import { formatTime } from 'utils';
 
@@ -19,7 +13,6 @@ export const formatTodayDetailsData = (data) => {
 			code: 'humidity',
 			name: 'Влажность',
 			img: humidity,
-			imgDark: humiditydark,
 			value: 75,
 			units: '%',
 			progress: {
@@ -33,7 +26,6 @@ export const formatTodayDetailsData = (data) => {
 			code: 'barometr',
 			name: 'Давление',
 			img: barometr,
-			imgDark: barometrdark,
 			value: 761,
 			progress: {
 				type: 'high',
@@ -46,7 +38,6 @@ export const formatTodayDetailsData = (data) => {
 			code: 'visibility',
 			name: 'Видимость',
 			img: visibility,
-			imgDark: visibilitydark,
 			value: 10,
 			units: 'км',
 			progress: {
@@ -60,7 +51,6 @@ export const formatTodayDetailsData = (data) => {
 			code: 'sunrise',
 			name: 'Рассвет',
 			img: sunrise,
-			imgDark: sunrisedark,
 			value: '8:42',
 			description: 'Прошло: 02:47',
 		},
@@ -68,7 +58,6 @@ export const formatTodayDetailsData = (data) => {
 			code: 'sunset',
 			name: 'Закат',
 			img: sunset,
-			imgDark: sunsetdark,
 			value: '16:37',
 			description: 'Осталось: 05:08',
 		},
@@ -76,7 +65,6 @@ export const formatTodayDetailsData = (data) => {
 			code: 'direction',
 			name: 'Сила ветра',
 			img: direction,
-			imgDark: directiondark,
 			value: 2,
 			units: 'м/с',
 			windAngle: 315,
