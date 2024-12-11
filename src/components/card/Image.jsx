@@ -5,7 +5,8 @@ export const Image = ({ item, dark }) => {
 		<img
 			className={styles['card__img']}
 			style={item.windAngle ? { '--angle': item.windAngle + 45 + 'deg' } : {}}
-			src={dark ? item.imgDark : item.img}
+			// src={dark ? item.imgDark : item.img}
+			src={item.img}
 			alt='Иконка'
 		/>
 	);

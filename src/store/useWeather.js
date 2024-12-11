@@ -285,7 +285,6 @@ export const useWeather = () => {
 			const weatherData = weatherFromCache
 				? weatherFromCache
 				: await ApiServices.getWeatherData(lat, lon);
-			// console.log('weatherData2 =>', weatherData);
 			//==============================================================
 			//На этом участке режим частичных ошибок, закоментировать для нормальной работы
 			// const random = Math.random();

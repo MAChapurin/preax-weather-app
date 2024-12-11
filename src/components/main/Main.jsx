@@ -15,7 +15,6 @@ export const Main = () => {
 		setStartData,
 	} = useWeather();
 	useEffect(() => {
-		console.log('setStartData');
 		setStartData();
 	}, []);
 	return (

@@ -1,16 +1,13 @@
-import { useTheme } from 'store';
 import { ProgressBar } from 'components';
 import { Image } from './Image';
 
 import styles from './styles.module.css';
 
 export const Card = ({ item, className = '' }) => {
-	// console.log(item);
-	const { isDarkTheme } = useTheme();
 	return (
 		<li className={`${styles['card']} ${className}`}>
 			<h3 className={styles['card__header']}>{item.name}</h3>
-			{isDarkTheme ? <Image item={item} dark /> : <Image item={item} />}
+			<Image item={item} />
 			<div className={styles['card__value']}>
 				{item.value}
 				{item.units ? ' ' + item.units : ''}

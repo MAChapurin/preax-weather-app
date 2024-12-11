@@ -74,7 +74,7 @@
 	transition: left 0.5s ease-in-out;
 }
 
-.progress-line--high::before {
+[data-theme='light'] .progress-line--high::before {
 	background: linear-gradient(
 		90deg,
 		rgba(218, 218, 218, 1) 0%,
@@ -89,12 +89,26 @@
 	transition: background 0.5s;
 }
 
+.fadeIn {
+	animation: fadeIn 0.5s forwards;
+}
+
 [data-theme='dark'] .progress-line--high::before {
 	background: radial-gradient(
 		/* 90% 50% at 50%, */ rgb(183, 182, 182) 0%,
 		rgb(78, 78, 78) 45%,
 		rgb(38, 38, 38) 100%
 	);
+	animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 @media (max-width: 699.98px) {
