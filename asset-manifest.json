@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/preax-weather-app/static/css/main.22f66675.css",
-    "main.js": "/preax-weather-app/static/js/main.232b24bb.js",
+    "main.css": "/preax-weather-app/static/css/main.ad1fbfff.css",
+    "main.js": "/preax-weather-app/static/js/main.a7768188.js",
     "static/media/bg-day-5.webp": "/preax-weather-app/static/media/bg-day-5.a158a15ca94b75fa4426.webp",
     "static/media/bg-dark-5.webp": "/preax-weather-app/static/media/bg-dark-5.62eaa9dc808085f3a242.webp",
     "static/media/bg-day-8.webp": "/preax-weather-app/static/media/bg-day-8.c694c575d83e00887412.webp",
@@ -17,17 +17,12 @@
     "static/media/bg-dark-3.webp": "/preax-weather-app/static/media/bg-dark-3.c339e3f022518e4915e8.webp",
     "static/media/bg-day-2.webp": "/preax-weather-app/static/media/bg-day-2.f607b510c2b5235ca69d.webp",
     "static/media/bg-day-4.webp": "/preax-weather-app/static/media/bg-day-4.b79a583011c8b5f05ff6.webp",
-    "static/media/humiditydark.svg": "/preax-weather-app/static/media/humiditydark.2ea2c12fc04f8a1fc61b96ffe402ad94.svg",
     "static/media/bg-dark-4.webp": "/preax-weather-app/static/media/bg-dark-4.6c5a1a6f1b40004e373f.webp",
-    "static/media/barometrdark.svg": "/preax-weather-app/static/media/barometrdark.3456a893bf3cd5a1fec424c7f0d42855.svg",
     "static/media/humidity.svg": "/preax-weather-app/static/media/humidity.19cd26283b750e10517f1cd887bb5c7d.svg",
-    "static/media/visibilitydark.svg": "/preax-weather-app/static/media/visibilitydark.f833bd2001fb40f2f489d082ec67b258.svg",
     "static/media/bg-dark-7.webp": "/preax-weather-app/static/media/bg-dark-7.613635421cbdcbd024fe.webp",
     "static/media/bg-day-7.webp": "/preax-weather-app/static/media/bg-day-7.b81da5df49be64a9fcee.webp",
     "static/media/visibility.svg": "/preax-weather-app/static/media/visibility.a670ab345155a8f5a511cf14ababccb0.svg",
     "static/media/barometr.svg": "/preax-weather-app/static/media/barometr.78df0ac4d2803de2e51afc0507607856.svg",
-    "static/media/sunrisedark.svg": "/preax-weather-app/static/media/sunrisedark.3856fc49829b007bcd38915e62177878.svg",
-    "static/media/sunsetdark.svg": "/preax-weather-app/static/media/sunsetdark.d273f0d47d9d23800ad23bdb1308f72b.svg",
     "static/media/bg-day-1.webp": "/preax-weather-app/static/media/bg-day-1.8c96b5d228263f9fbe38.webp",
     "static/media/sunrise.svg": "/preax-weather-app/static/media/sunrise.3b5f3ac637406426c325acb340e8fdfa.svg",
     "static/media/bg-dark-9.webp": "/preax-weather-app/static/media/bg-dark-9.76a59827589dd4264d73.webp",
@@ -50,16 +45,15 @@
     "static/media/11d.svg": "/preax-weather-app/static/media/11d.708b57ca15f4669c664100f8715aae34.svg",
     "static/media/04n.svg": "/preax-weather-app/static/media/04n.67e178a1afe728810fb2a0288c087145.svg",
     "static/media/04d.svg": "/preax-weather-app/static/media/04d.faed5f62601566192b18f01a7bdda2f7.svg",
-    "static/media/directiondark.svg": "/preax-weather-app/static/media/directiondark.f753cc7974018c0f283c1001af40313f.svg",
     "static/media/direction.svg": "/preax-weather-app/static/media/direction.bc436c1a5c1b394b87f744b3b0d7babf.svg",
     "static/media/50n.svg": "/preax-weather-app/static/media/50n.308a858491171fa91e303adf22292bf6.svg",
     "static/media/50d.svg": "/preax-weather-app/static/media/50d.453f78d7e4095745a4d487e6cee247b7.svg",
     "index.html": "/preax-weather-app/index.html",
-    "main.22f66675.css.map": "/preax-weather-app/static/css/main.22f66675.css.map",
-    "main.232b24bb.js.map": "/preax-weather-app/static/js/main.232b24bb.js.map"
+    "main.ad1fbfff.css.map": "/preax-weather-app/static/css/main.ad1fbfff.css.map",
+    "main.a7768188.js.map": "/preax-weather-app/static/js/main.a7768188.js.map"
   },
   "entrypoints": [
-    "static/css/main.22f66675.css",
-    "static/js/main.232b24bb.js"
+    "static/css/main.ad1fbfff.css",
+    "static/js/main.a7768188.js"
   ]
 }
