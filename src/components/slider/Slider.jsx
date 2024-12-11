@@ -40,7 +40,9 @@ export const Slider = ({ data, vissible, loading }) => {
 
 	const resize = useDebounce(() => {
 		setSizeContainer(window.innerWidth);
-	}, 100);
+		setIndex(0);
+		setFinish(false);
+	}, 300);
 
 	useEffect(() => {
 		window.addEventListener('resize', resize);
