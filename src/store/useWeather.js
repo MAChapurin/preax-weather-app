@@ -221,17 +221,17 @@ export const useWeather = () => {
 		);
 	}, [cityCardData, todayDetailsData]);
 
-	useEffect(() => {
-		const clearSessionStorage = () => {
-			sessionStorage.removeItem(STORAGE_KEYS.cacheCityData);
-			sessionStorage.removeItem(STORAGE_KEYS.cacheWeatherData);
-			sessionStorage.removeItem(STORAGE_KEYS.cacheWeatherWeekData);
-		};
-		const intervalId = setInterval(clearSessionStorage, 1000 * 60 * 10);
-		return () => {
-			clearInterval(intervalId);
-		};
-	}, []);
+	// useEffect(() => {
+	// 	const clearSessionStorage = () => {
+	// 		sessionStorage.removeItem(STORAGE_KEYS.cacheCityData);
+	// 		sessionStorage.removeItem(STORAGE_KEYS.cacheWeatherData);
+	// 		sessionStorage.removeItem(STORAGE_KEYS.cacheWeatherWeekData);
+	// 	};
+	// 	const intervalId = setInterval(clearSessionStorage, 1000 * 60 * 10);
+	// 	return () => {
+	// 		clearInterval(intervalId);
+	// 	};
+	// }, []);
 
 	const clearHistory = () => {
 		setHistory([]);
@@ -247,7 +247,6 @@ export const useWeather = () => {
 				? dataFromCache
 				: await ApiServices.getCityData(city);
 			if (!dataFromCache) cacheCityData.set(city, responseCity);
-			// console.log('responseCity', responseCity, cacheCityData);
 			if (!responseCity.length) {
 				setIsCitySearching(false);
 				setError(`Упс... Город ${city} не найден.`);
@@ -353,12 +352,15 @@ export const useWeather = () => {
 		[setDayDetailData, setError, setLoadingWeek, setWeekData]
 	);
 
-	const update = (lat, lon, name) => {
-		setError(null);
-		setLastCity({ lat, lon, name });
-		getWeatherData(name);
-		getWeekWeatherData(lat, lon);
-	};
+	const update = useCallback(
+		(lat, lon, name) => {
+			setError(null);
+			setLastCity({ lat, lon, name });
+			getWeatherData(name);
+			getWeekWeatherData(lat, lon);
+		},
+		[getWeatherData, getWeekWeatherData, setError, setLastCity]
+	);
 
 	const updateWeatherData = () => {
 		if (lastCity) {
@@ -372,7 +374,7 @@ export const useWeather = () => {
 			const { lat, lon, name } = defaultCity;
 			update(lat, lon, name);
 		}
-	}, []);
+	}, [defaultCity, update]);
 
 	const getWeather = useCallback(
 		(lat, lon, name) => {

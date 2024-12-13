@@ -1,9 +1,10 @@
 export class ApiServices {
 	// ===========================================================================================
-	static async getCitiesByQuery(query) {
+	static async getCitiesByQuery(query, signal) {
 		try {
 			const request = await fetch(
-				`https://nominatim.openstreetmap.org/search.php?q=${query}&format=json&addressdetails=0&&limit=20&lang=ru`
+				`https://nominatim.openstreetmap.org/search.php?q=${query}&format=json&addressdetails=0&&limit=20&lang=ru`,
+				{ signal }
 			);
 			const data = await request.json();
 			return Array.from(new Set(data.filter(Boolean).map((el) => el.name)));

@@ -6,3 +6,7 @@ export { formatDayWeather } from './formatDayWeather';
 export { formatTodayDetailsData } from './formatTodayDetailsData';
 export { formatWeekData } from './formatWeekData';
 export { getCityName } from './getCityName';
+export {
+	saveMapToSessionStorage,
+	loadMapFromSessionStorage,
+} from './sessionStorage';

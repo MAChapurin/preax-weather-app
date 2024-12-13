@@ -7,7 +7,7 @@ import { useWeather } from 'store';
 export const Favorites = () => {
 	const { favorites, handlerLike, isLiked, handlerDislike } = useFavorites();
 	const { getWeather } = useWeather();
-	console.log('render Favorites');
+	// console.log('render Favorites');
 	return (
 		<div>
 			{favorites.length > 0 && (

@@ -35,7 +35,7 @@ export const WeatherSearch = () => {
 		if (isDropdownOpen) {
 			setError('');
 		}
-	}, [isDropdownOpen]);
+	}, [isDropdownOpen, setError]);
 
 	return (
 		<search

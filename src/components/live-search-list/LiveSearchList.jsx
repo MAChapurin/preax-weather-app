@@ -1,9 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Title } from 'components';
 import { ApiServices } from 'api';
 
 import styles from './styles.module.css';
 import { useWeather } from 'store';
+import { useRef } from 'react';
+import { loadMapFromSessionStorage, saveMapToSessionStorage } from 'utils';
+
+const keyCashForSessionStorage = 'CitiesByQuery';
 
 const getFormatString = (str1, str2) => {
 	if (str1.toLowerCase().includes(str2)) {
@@ -25,18 +29,27 @@ export const LifeSearchList = () => {
 	const nodeCityInput = document.querySelector('input[name="city"]');
 	const value = debounceValue;
 
-	const keyCashForSessionStorage = 'CitiesByQuery';
-	const cache = new Map();
-	// JSON.parse(sessionStorage.getItem(keyCashForSessionStorage))
+	const abortControllerRef = useRef(null);
 
-	const getCities = async (query) => {
-		const dataFromCache = cache.get(query);
-		const citiesResult = dataFromCache
-			? dataFromCache
-			: await ApiServices.getCitiesByQuery(query);
-		if (!dataFromCache) cache.set(query, citiesResult);
-		setCities(citiesResult);
-	};
+	const cache = useMemo(
+		() => loadMapFromSessionStorage(keyCashForSessionStorage),
+		[]
+	);
+
+	const getCities = useCallback(
+		async (query, signal) => {
+			const dataFromCache = cache.get(query);
+			const citiesResult = dataFromCache
+				? dataFromCache
+				: await ApiServices.getCitiesByQuery(query, signal);
+			if (!dataFromCache) {
+				cache.set(query, citiesResult);
+				saveMapToSessionStorage(cache, keyCashForSessionStorage);
+			}
+			setCities(citiesResult);
+		},
+		[cache]
+	);
 
 	const onClick = (e) => {
 		const newValue = e.target?.closest('button').dataset?.city;
@@ -48,12 +61,13 @@ export const LifeSearchList = () => {
 	};
 
 	useEffect(() => {
-		getCities(value);
-	}, [value]);
-
-	useEffect(() => {
-		sessionStorage.setItem(keyCashForSessionStorage, JSON.stringify(cache));
-	}, [cache.length]);
+		if (abortControllerRef.current) {
+			abortControllerRef.current.abort();
+		}
+		abortControllerRef.current = new AbortController();
+		const signal = abortControllerRef.current.signal;
+		getCities(value, signal);
+	}, [getCities, value]);
 
 	return (
 		<div>

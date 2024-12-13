@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useBackground } from 'hooks';
 import { ErrorWidget, Icon, Skeleton } from 'components';
 import { cn, formatTime } from 'utils';
@@ -31,7 +31,7 @@ export const WeatherCard = ({
 	const checkedStyles = isChecked ? styles.checked : '';
 	const { time } = formatTime(date, timezone * 1000);
 
-	const getData = async () => {
+	const getData = useCallback(async () => {
 		if (!lat || !lon) {
 			console.log('no coords');
 			return false;
@@ -55,7 +55,7 @@ export const WeatherCard = ({
 		} finally {
 			setLoading(false);
 		}
-	};
+	}, [lat, lon]);
 
 	const updateDate = () => {
 		setDate(Date.now);
@@ -63,7 +63,8 @@ export const WeatherCard = ({
 
 	useEffect(() => {
 		getData();
-	}, [lat, lon]);
+	}, [getData]);
+
 	useEffect(() => {
 		const id = setInterval(updateDate, 30000);
 		return () => {

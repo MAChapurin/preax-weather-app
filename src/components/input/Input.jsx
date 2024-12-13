@@ -47,9 +47,12 @@ export const Input = () => {
 		setError(null);
 		setCitySearchResult('');
 		const newValue = e.target.value;
-		if (!/[A-Za-z]/g.test(newValue)) {
-			setValue(newValue);
+		inputRef.current?.setCustomValidity('');
+		if (/[A-Za-z]/g.test(newValue)) {
+			inputRef.current?.setCustomValidity('Введите данные на русском языке');
+		} else {
 		}
+		setValue(newValue);
 	};
 	return (
 		<form
