@@ -8,8 +8,14 @@ import {
 	formatTodayDetailsData,
 	formatWeekData,
 	getCityName,
+	loadMapFromSessionStorage,
+	saveMapToSessionStorage,
 } from 'utils';
 import { useDebounceValue } from 'hooks';
+import {
+	loadMapFromLocalStorage,
+	saveMapToLocalStorage,
+} from 'utils/localStorage';
 
 const subscribers = new Set();
 
@@ -19,16 +25,20 @@ const emitChange = () => {
 	});
 };
 
-const cacheCityData = new Map();
-const cacheWeatherData = new Map();
-const cacheWeatherWeekData = new Map();
-
 const STORAGE_KEYS = {
 	defaultCity: 'defaultCityKey',
 	cacheCityData: 'cacheCityData',
 	cacheWeatherData: 'cacheWeatherData',
 	cacheWeatherWeekData: 'cacheWeatherWeekData',
 };
+
+const cacheCityData = loadMapFromLocalStorage(STORAGE_KEYS.cacheCityData);
+const cacheWeatherData = loadMapFromSessionStorage(
+	STORAGE_KEYS.cacheWeatherData
+);
+const cacheWeatherWeekData = loadMapFromSessionStorage(
+	STORAGE_KEYS.cacheWeatherWeekData
+);
 
 const moscow = {
 	lat: '55.625578',
@@ -201,37 +211,8 @@ export const useWeather = () => {
 	}, []);
 
 	useEffect(() => {
-		sessionStorage.setItem(
-			STORAGE_KEYS.cacheCityData,
-			JSON.stringify(cacheCityData)
-		);
+		saveMapToLocalStorage(cacheCityData, STORAGE_KEYS.cacheCityData);
 	}, [citySearchResult]);
-
-	useEffect(() => {
-		sessionStorage.setItem(
-			STORAGE_KEYS.cacheWeatherData,
-			JSON.stringify(cacheWeatherData)
-		);
-	}, [cityCardData, todayDetailsData]);
-
-	useEffect(() => {
-		sessionStorage.setItem(
-			cacheWeatherWeekData,
-			JSON.stringify(cacheWeatherWeekData)
-		);
-	}, [cityCardData, todayDetailsData]);
-
-	// useEffect(() => {
-	// 	const clearSessionStorage = () => {
-	// 		sessionStorage.removeItem(STORAGE_KEYS.cacheCityData);
-	// 		sessionStorage.removeItem(STORAGE_KEYS.cacheWeatherData);
-	// 		sessionStorage.removeItem(STORAGE_KEYS.cacheWeatherWeekData);
-	// 	};
-	// 	const intervalId = setInterval(clearSessionStorage, 1000 * 60 * 10);
-	// 	return () => {
-	// 		clearInterval(intervalId);
-	// 	};
-	// }, []);
 
 	const clearHistory = () => {
 		setHistory([]);
@@ -297,10 +278,18 @@ export const useWeather = () => {
 				const weatherData = weatherFromCache
 					? weatherFromCache
 					: await ApiServices.getWeatherData(lat, lon);
+
+				if (!weatherFromCache) {
+					cacheWeatherData.set(city, weatherData);
+					saveMapToSessionStorage(
+						cacheWeatherData,
+						STORAGE_KEYS.cacheWeatherData
+					);
+				}
 				//==============================================================
 				//На этом участке режим частичных ошибок, закоментировать для нормальной работы
-				const random = Math.random();
-				if (random < 0.2) throw new Error('Shit is hapening sometime');
+				// const random = Math.random();
+				// if (random < 0.2) throw new Error('Shit is hapening sometime');
 				//==============================================================
 				const cityName = getCityName(cityData[0]);
 				setCityCardData(formatCityCardData(weatherData, cityName));
@@ -333,7 +322,13 @@ export const useWeather = () => {
 					? dataFromCache
 					: await ApiServices.getWeekWeatherData(lat, lon);
 
-				if (!dataFromCache) cacheWeatherWeekData.set(keyForCache, data);
+				if (!dataFromCache) {
+					cacheWeatherWeekData.set(keyForCache, data);
+					saveMapToSessionStorage(
+						cacheWeatherWeekData,
+						STORAGE_KEYS.cacheWeatherWeekData
+					);
+				}
 
 				setWeekData(
 					formatWeekData(data.list, data.city.timezone).length > 5
