@@ -16,6 +16,7 @@ export const STORAGE_KEYS = {
 	cacheWeatherWeekData: 'cacheWeatherWeekData',
 	cacheWeatherDataMini: 'cacheWeatherDataMini',
 	cacheCitiesByQuery: 'CitiesByQuery',
+	weatherAppSearchHistory: 'weatherAppSearchHistory',
 };
 
 export const MOSCOW_COORDS = {

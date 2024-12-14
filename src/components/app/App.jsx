@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useWeather } from 'store';
 import { useBackground } from 'hooks';
 import { Footer, Header, Main } from 'components';
@@ -9,17 +8,6 @@ import styles from './styles.module.css';
 export function App() {
 	const { isDropdownOpen, cityCardData } = useWeather();
 	const backgroundImage = useBackground(cityCardData.img?.alt);
-
-	useEffect(() => {
-		if (isDropdownOpen) {
-			document.body.style.overflow = 'hidden';
-		} else {
-			document.body.style.overflow = 'visible';
-		}
-		return () => {
-			document.body.style.overflow = 'visible';
-		};
-	}, [isDropdownOpen]);
 
 	return (
 		<div

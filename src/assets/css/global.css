@@ -20,6 +20,10 @@ body {
 	font-family: var(--std-font-family);
 }
 
+body:has([data-dropdown='open']) {
+	overflow: hidden;
+}
+
 input,
 textarea {
 	font-family: var(--std-font-family);

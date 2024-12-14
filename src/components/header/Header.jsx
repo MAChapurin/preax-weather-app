@@ -11,6 +11,7 @@ export const Header = () => {
 			className={cn(styles.header, {
 				[styles.open]: isDropdownOpen,
 			})}
+			data-dropdown={isDropdownOpen ? 'open' : 'close'}
 		>
 			<Logo />
 			<div className={styles.right}>

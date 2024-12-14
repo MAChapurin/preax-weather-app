@@ -195,21 +195,18 @@ export const useWeather = () => {
 
 	useEffect(() => {
 		const storedCities =
-			JSON.parse(localStorage.getItem('weatherAppSearchHistory')) || [];
+			JSON.parse(localStorage.getItem(STORAGE_KEYS.weatherAppSearchHistory)) ||
+			[];
 		setHistory(storedCities);
-	}, []);
+	}, [setHistory]);
 
 	useEffect(() => {
 		saveMapToLocalStorage(cacheCityData, STORAGE_KEYS.cacheCityData);
 	}, [citySearchResult]);
 
-	useEffect(() => {
-		setStartData();
-	}, []);
-
 	const clearHistory = () => {
 		setHistory([]);
-		localStorage.removeItem('weatherAppSearchHistory');
+		localStorage.removeItem(STORAGE_KEYS.weatherAppSearchHistory);
 	};
 
 	const getCityData = async (city) => {
@@ -243,7 +240,7 @@ export const useWeather = () => {
 			}
 			setHistory(updatedHistory);
 			localStorage.setItem(
-				'weatherAppSearchHistory',
+				STORAGE_KEYS.weatherAppSearchHistory,
 				JSON.stringify(updatedHistory)
 			);
 
@@ -363,6 +360,10 @@ export const useWeather = () => {
 			update(lat, lon, name);
 		}
 	}, [defaultCity, update]);
+
+	useEffect(() => {
+		setStartData();
+	}, [setStartData]);
 
 	const getWeather = useCallback(
 		(lat, lon, name) => {
