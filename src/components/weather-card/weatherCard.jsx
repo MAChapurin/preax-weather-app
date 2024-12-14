@@ -1,9 +1,15 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useBackground } from 'hooks';
 import { ErrorWidget, Icon, Skeleton } from 'components';
-import { cn, formatTime } from 'utils';
+import {
+	cn,
+	formatTime,
+	loadMapFromSessionStorage,
+	saveMapToSessionStorage,
+} from 'utils';
 
 import { ApiServices } from 'api';
+import { STORAGE_KEYS } from 'constants';
 
 import styles from './styles.module.css';
 
@@ -31,38 +37,71 @@ export const WeatherCard = ({
 	const checkedStyles = isChecked ? styles.checked : '';
 	const { time } = formatTime(date, timezone * 1000);
 
-	const getData = useCallback(async () => {
-		if (!lat || !lon) {
-			console.log('no coords');
-			return false;
-		}
-		setLoading(true);
-		setError(null);
-		try {
-			const { temp, description, timezone } =
-				await ApiServices.getWeatherMiniData(lat, lon);
-			//==============================================================
-			//На этом участке режим частичных ошибок, закоментировать для нормальной работы
-			// const random = Math.random();
-			// if (random < 0.2) throw new Error('Shit is hapening sometime');
-			//==============================================================
-			setTemp(temp);
-			setStatus(description);
-			setTimezone(timezone);
-		} catch (e) {
-			console.log('from weatherCard =>', e.message);
-			setError(e?.message);
-		} finally {
-			setLoading(false);
-		}
-	}, [lat, lon]);
+	const abortControllerRef = useRef(null);
+
+	const cacheWeatherDataMini = useMemo(
+		() => loadMapFromSessionStorage(STORAGE_KEYS.cacheWeatherDataMini),
+		[]
+	);
+
+	const getData = useCallback(
+		async (signal) => {
+			if (!lat || !lon) {
+				console.log('no coords');
+				return false;
+			}
+			setLoading(true);
+			setError(null);
+			try {
+				const dataFromCache = cacheWeatherDataMini.get(`${lat}+${lon}`);
+				const { temp, description, timezone } = dataFromCache
+					? dataFromCache
+					: await ApiServices.getWeatherMiniData(lat, lon, signal);
+
+				if (!dataFromCache) {
+					cacheWeatherDataMini.set(`${lat}+${lon}`, {
+						temp,
+						description,
+						timezone,
+					});
+					saveMapToSessionStorage(
+						cacheWeatherDataMini,
+						STORAGE_KEYS.cacheWeatherDataMini
+					);
+				}
+				//==============================================================
+				//На этом участке режим частичных ошибок, закоментировать для нормальной работы
+				// const random = Math.random();
+				// if (random < 0.2) throw new Error('Shit is hapening sometime');
+				//==============================================================
+				setTemp(temp);
+				setStatus(description);
+				setTimezone(timezone);
+			} catch (e) {
+				console.log('from weatherCard =>', e.message);
+				setError(e?.message);
+			} finally {
+				setLoading(false);
+			}
+		},
+		[lat, lon]
+	);
 
 	const updateDate = () => {
 		setDate(Date.now);
 	};
 
 	useEffect(() => {
-		getData();
+		if (abortControllerRef.current) {
+			abortControllerRef.current.abort();
+		}
+		abortControllerRef.current = new AbortController();
+		const signal = abortControllerRef.current.signal;
+		getData(signal);
+
+		return () => {
+			abortControllerRef.current.abort();
+		};
 	}, [getData]);
 
 	useEffect(() => {

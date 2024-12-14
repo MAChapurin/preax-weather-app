@@ -10,3 +10,5 @@ export {
 	saveMapToSessionStorage,
 	loadMapFromSessionStorage,
 } from './sessionStorage';
+
+export { loadMapFromLocalStorage, saveMapToLocalStorage } from './localStorage';

@@ -51,6 +51,7 @@ export const Input = () => {
 		if (/[A-Za-z]/g.test(newValue)) {
 			inputRef.current?.setCustomValidity('Введите данные на русском языке');
 		} else {
+			inputRef.current?.setCustomValidity('');
 		}
 		setValue(newValue);
 	};

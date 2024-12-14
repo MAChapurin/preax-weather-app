@@ -1,14 +1,10 @@
-import { useEffect } from 'react';
 import { CardList, CityCard, ErrorWidget, Tab } from 'components';
 import { useWeather } from 'store';
 
 import styles from './styles.module.css';
 
 export const Main = () => {
-	const { error, updateWeatherData, setStartData } = useWeather();
-	useEffect(() => {
-		setStartData();
-	}, []);
+	const { error, updateWeatherData } = useWeather();
 	return (
 		<main>
 			{error ? (

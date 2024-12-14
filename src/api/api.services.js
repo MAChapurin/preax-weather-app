@@ -14,10 +14,11 @@ export class ApiServices {
 		}
 	}
 	// ===========================================================================================
-	static async getWeatherMiniData(lat, lon) {
+	static async getWeatherMiniData(lat, lon, signal) {
 		try {
 			const request = await fetch(
-				`https://ru.api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric&lang=ru`
+				`https://ru.api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric&lang=ru`,
+				{ signal }
 			);
 			const response = await request.json();
 			if (Number(response?.cod) >= 400) {

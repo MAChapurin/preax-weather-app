@@ -1,13 +1,12 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState, useRef } from 'react';
 import { Title } from 'components';
 import { ApiServices } from 'api';
 
-import styles from './styles.module.css';
 import { useWeather } from 'store';
-import { useRef } from 'react';
 import { loadMapFromSessionStorage, saveMapToSessionStorage } from 'utils';
+import { STORAGE_KEYS } from 'constants';
 
-const keyCashForSessionStorage = 'CitiesByQuery';
+import styles from './styles.module.css';
 
 const getFormatString = (str1, str2) => {
 	if (str1.toLowerCase().includes(str2)) {
@@ -25,38 +24,38 @@ const getFormatString = (str1, str2) => {
 
 export const LifeSearchList = () => {
 	const [cities, setCities] = useState([]);
-	const { debounceValue, setValue } = useWeather();
-	const nodeCityInput = document.querySelector('input[name="city"]');
+	const { debounceValue, getCityData } = useWeather();
 	const value = debounceValue;
 
 	const abortControllerRef = useRef(null);
 
-	const cache = useMemo(
-		() => loadMapFromSessionStorage(keyCashForSessionStorage),
+	const cacheCitiesByQuery = useMemo(
+		() => loadMapFromSessionStorage(STORAGE_KEYS.cacheCitiesByQuery),
 		[]
 	);
 
 	const getCities = useCallback(
 		async (query, signal) => {
-			const dataFromCache = cache.get(query);
+			const dataFromCache = cacheCitiesByQuery.get(query);
 			const citiesResult = dataFromCache
 				? dataFromCache
 				: await ApiServices.getCitiesByQuery(query, signal);
 			if (!dataFromCache) {
-				cache.set(query, citiesResult);
-				saveMapToSessionStorage(cache, keyCashForSessionStorage);
+				cacheCitiesByQuery.set(query, citiesResult);
+				saveMapToSessionStorage(
+					cacheCitiesByQuery,
+					STORAGE_KEYS.cacheCitiesByQuery
+				);
 			}
 			setCities(citiesResult);
 		},
-		[cache]
+		[cacheCitiesByQuery]
 	);
 
 	const onClick = (e) => {
 		const newValue = e.target?.closest('button').dataset?.city;
 		if (newValue) {
-			console.log(newValue);
-			setValue(newValue);
-			nodeCityInput?.focus();
+			getCityData(newValue);
 		}
 	};
 
@@ -69,10 +68,21 @@ export const LifeSearchList = () => {
 		getCities(value, signal);
 	}, [getCities, value]);
 
+	const isShowedRepeatValue =
+		!cities.map((el) => el.toLowerCase()).includes(value.toLowerCase()) &&
+		value.length >= 3;
+
 	return (
 		<div>
 			<Title text={'Города по запросу'} />
 			<ul className={styles.list} onClick={onClick}>
+				{isShowedRepeatValue && (
+					<li>
+						<button className={styles.btn} data-city={value}>
+							{getFormatString(value, value)}
+						</button>
+					</li>
+				)}
 				{cities.map((city) => (
 					<li key={city}>
 						<button className={styles.btn} data-city={city}>

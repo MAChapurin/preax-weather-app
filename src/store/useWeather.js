@@ -10,12 +10,14 @@ import {
 	getCityName,
 	loadMapFromSessionStorage,
 	saveMapToSessionStorage,
-} from 'utils';
-import { useDebounceValue } from 'hooks';
-import {
 	loadMapFromLocalStorage,
 	saveMapToLocalStorage,
-} from 'utils/localStorage';
+} from 'utils';
+
+import { useDebounceValue } from 'hooks';
+
+import { STORAGE_KEYS } from 'constants';
+import { MOSCOW_COORDS } from 'constants';
 
 const subscribers = new Set();
 
@@ -23,13 +25,6 @@ const emitChange = () => {
 	subscribers.forEach((callback) => {
 		callback();
 	});
-};
-
-const STORAGE_KEYS = {
-	defaultCity: 'defaultCityKey',
-	cacheCityData: 'cacheCityData',
-	cacheWeatherData: 'cacheWeatherData',
-	cacheWeatherWeekData: 'cacheWeatherWeekData',
 };
 
 const cacheCityData = loadMapFromLocalStorage(STORAGE_KEYS.cacheCityData);
@@ -40,16 +35,10 @@ const cacheWeatherWeekData = loadMapFromSessionStorage(
 	STORAGE_KEYS.cacheWeatherWeekData
 );
 
-const moscow = {
-	lat: '55.625578',
-	lon: '37.6063916',
-	name: 'Москва',
-};
-
 const defaultCityData = localStorage.getItem(STORAGE_KEYS.defaultCity);
 const initialDefaultCityState = defaultCityData
 	? JSON.parse(defaultCityData)
-	: moscow;
+	: MOSCOW_COORDS;
 
 let value = '';
 let error = null;
@@ -213,6 +202,10 @@ export const useWeather = () => {
 	useEffect(() => {
 		saveMapToLocalStorage(cacheCityData, STORAGE_KEYS.cacheCityData);
 	}, [citySearchResult]);
+
+	useEffect(() => {
+		setStartData();
+	}, []);
 
 	const clearHistory = () => {
 		setHistory([]);

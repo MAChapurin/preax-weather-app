@@ -27,7 +27,6 @@ export const SearchWidget = () => {
 							)
 						}
 						supportCallBack={() => {
-							console.log('weatherCard support cb searchResult starting');
 							isLiked(citySearchResult.osm_id)
 								? handlerDislike(citySearchResult.osm_id)
 								: handlerLike(citySearchResult);
