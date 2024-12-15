@@ -78,14 +78,22 @@ export const LifeSearchList = () => {
 			<ul className={styles.list} onClick={onClick}>
 				{isShowedRepeatValue && (
 					<li>
-						<button className={styles.btn} data-city={value}>
+						<button
+							aria-label={'Отправить запрос на поиск для ' + value}
+							className={styles.btn}
+							data-city={value}
+						>
 							{getFormatString(value, value)}
 						</button>
 					</li>
 				)}
 				{cities.map((city) => (
 					<li key={city}>
-						<button className={styles.btn} data-city={city}>
+						<button
+							aria-label={'Отправить запрос на поиск для ' + city}
+							className={styles.btn}
+							data-city={city}
+						>
 							{getFormatString(city, value)}
 						</button>
 					</li>

@@ -122,6 +122,7 @@ export const WeatherCard = ({
 					}}
 				>
 					<button
+						aria-label={'Загрузка прогноза погода для ' + name}
 						className={`btn-reset ${styles.mainBtn}`}
 						onClick={mainCallBack}
 					>
@@ -136,6 +137,9 @@ export const WeatherCard = ({
 					</button>
 					{!isWithoutSupport && (
 						<button
+							aria-label={
+								isChecked ? 'Убрать из избранного' : 'Добавить в избранное'
+							}
 							className={`btn-reset ${styles.supportBtn} ${checkedStyles}`}
 							onClick={supportCallBack}
 							disabled={disabled}

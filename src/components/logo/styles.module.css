@@ -20,6 +20,7 @@
 
 .logoMini path {
 	fill: var(--light-filled-900);
+	transition: fill 0.5s;
 }
 
 .logoMini path[datatype='first-letter'] {

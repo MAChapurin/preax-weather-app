@@ -6,6 +6,23 @@ import styles from './styles.module.css';
 export const SearchWidget = () => {
 	const { citySearchResult, isCitySearching, error, getWeather } = useWeather();
 	const { favorites, isLiked, handlerDislike, handlerLike } = useFavorites();
+
+	const mainCallBack = () =>
+		getWeather(
+			citySearchResult.lat,
+			citySearchResult.lon,
+			citySearchResult.name
+		);
+
+	const supportCallBack = () => {
+		isLiked(citySearchResult.osm_id)
+			? handlerDislike(citySearchResult.osm_id)
+			: handlerLike(citySearchResult);
+	};
+
+	const isDisabled = favorites.length >= 5 && !isLiked(citySearchResult.osm_id);
+	const isChecked = isLiked(citySearchResult.osm_id);
+
 	return (
 		<>
 			{isCitySearching && (
@@ -19,22 +36,10 @@ export const SearchWidget = () => {
 					<h3 className={styles.title}>Результат поиска</h3>
 					<WeatherCard
 						name={citySearchResult.name}
-						mainCallBack={() =>
-							getWeather(
-								citySearchResult.lat,
-								citySearchResult.lon,
-								citySearchResult.name
-							)
-						}
-						supportCallBack={() => {
-							isLiked(citySearchResult.osm_id)
-								? handlerDislike(citySearchResult.osm_id)
-								: handlerLike(citySearchResult);
-						}}
-						disabled={
-							favorites.length >= 5 && !isLiked(citySearchResult.osm_id)
-						}
-						isChecked={isLiked(citySearchResult.osm_id)}
+						mainCallBack={mainCallBack}
+						supportCallBack={supportCallBack}
+						disabled={isDisabled}
+						isChecked={isChecked}
 						lat={citySearchResult.lat}
 						lon={citySearchResult.lon}
 					/>

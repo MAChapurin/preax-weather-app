@@ -139,11 +139,7 @@
 	}
 }
 
-@media all and (max-width: 639px) {
-	.card {
-		flex-direction: column;
-	}
-
+@media all and (max-width: 640px) {
 	.slide-btn {
 		width: 40px;
 		height: 32px;
@@ -152,5 +148,11 @@
 	.slide-btn svg {
 		width: 16px;
 		height: 16px;
+	}
+}
+
+@media all and (max-width: 639px) {
+	.card {
+		flex-direction: column;
 	}
 }

@@ -4,7 +4,6 @@ import { cn } from 'utils';
 
 import styles from './styles.module.css';
 
-
 export function Switch() {
 	const { isDropdownOpen } = useWeather();
 	const { isDarkTheme, setIsDarkTheme } = useTheme();
@@ -16,6 +15,7 @@ export function Switch() {
 			})}
 		>
 			<input
+				aria-label={`Переключить на ${isDarkTheme ? 'светлую' : 'темную'} тему`}
 				className={styles.checkbox}
 				type='checkbox'
 				checked={isDarkTheme}

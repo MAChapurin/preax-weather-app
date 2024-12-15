@@ -12,6 +12,7 @@ export const HistoryList = () => {
 			<div className={styles.header}>
 				<Title text={'Недавно смотрели'} />
 				<button
+					aria-label={'Очистить историю поиска'}
 					className={styles.button}
 					onClick={clearHistory}
 					disabled={!history.length}

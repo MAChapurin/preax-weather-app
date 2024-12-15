@@ -7,6 +7,7 @@ export const Main = () => {
 	const { error, updateWeatherData } = useWeather();
 	return (
 		<main>
+			<h1 className={styles.visuallyhidden}>Приложение прогноза погоды</h1>
 			{error ? (
 				<ErrorWidget variant={'big'} cb={updateWeatherData} />
 			) : (

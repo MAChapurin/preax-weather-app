@@ -55,6 +55,8 @@
 }
 
 .card__value {
+	position: relative;
+	top: -4px;
 	font-weight: 400;
 	font-size: 32px;
 	line-height: 32px;
@@ -81,6 +83,12 @@
 
 [data-theme='dark'] .card__desc {
 	color: var(--dark-filled-800);
+}
+
+@media (max-width: 1023px) {
+	.card__value {
+		top: 0;
+	}
 }
 
 @media (max-width: 699.98px) {

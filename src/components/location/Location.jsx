@@ -25,6 +25,7 @@ const ErrorResult = () => (
 	<>
 		<h3 className={styles.title}>{TEXT.errorTitle}</h3>
 		<p className={styles.desc}>{TEXT.errorMessage1}</p>
+		<p className={styles.desc}>{TEXT.errorMessage2}</p>
 	</>
 );
 
@@ -97,9 +98,10 @@ export const Location = () => {
 	};
 
 	const onConfirm = () => {
+		console.log('location => ', city);
 		getWeather(lat, lon, city);
 		setIsGeoActive(false);
-		setDefaultCity({ lat, lon, city });
+		setDefaultCity({ lat, lon, name: city });
 		localStorage.setItem(
 			STORAGE_KEYS.defaultCity,
 			JSON.stringify({ lat, lon, name: city })
@@ -133,10 +135,15 @@ export const Location = () => {
 						isWithoutSupport
 					/>
 					<div className={styles.btnWrap}>
-						<button onClick={onClose} className={styles.btn}>
+						<button
+							aria-label='Отменить выбор местоположения'
+							onClick={onClose}
+							className={styles.btn}
+						>
 							Нет
 						</button>
 						<button
+							aria-label='Подтвердить геологацию'
 							ref={btnConfirmRef}
 							className={styles.btn}
 							onClick={onConfirm}

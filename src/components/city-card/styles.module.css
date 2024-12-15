@@ -11,6 +11,7 @@
 	flex-direction: column;
 	align-items: center;
 	row-gap: var(--std-offset-xs-s);
+	padding-top: 5px;
 }
 
 .panel-info__title {
@@ -24,15 +25,24 @@
 	line-height: 24px;
 }
 
+.panel-info__text:first-letter {
+	text-transform: uppercase;
+}
+
 .panel-info__temp {
 	font-size: 112px;
 	font-weight: 700;
-	line-height: 112px;
+	line-height: 100px;
 }
 
 .panel-info__state {
+	padding-top: 8px;
 	display: inline-flex;
 	column-gap: var(--std-offset-xs-s);
+}
+
+.panel-info__state span:first-letter {
+	text-transform: uppercase;
 }
 
 .panel-info__img {
@@ -47,7 +57,12 @@
 	}
 
 	.panel-info__row {
+		padding-top: 0px;
 		row-gap: var(--std-offset);
+	}
+
+	.panel-info__state {
+		padding-top: 10px;
 	}
 }
 
@@ -76,6 +91,7 @@
 	}
 
 	.panel-info__state {
+		padding-top: 0;
 		column-gap: var(--std-offset-s);
 	}
 

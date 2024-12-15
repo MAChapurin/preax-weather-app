@@ -75,6 +75,7 @@ export const Input = () => {
 				onClick={onClick}
 			/>
 			<button
+				aria-label={'Очистить поле ввода'}
 				className={cn(styles.button, {
 					[styles.pointer]: value,
 				})}
@@ -84,6 +85,7 @@ export const Input = () => {
 				<Icon name={value ? 'clear' : 'search'} />
 			</button>
 			<button
+				aria-label={'Перейти в раздел геолокации'}
 				onFocus={onGeo}
 				onClick={onGeo}
 				type='button'
