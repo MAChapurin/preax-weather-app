@@ -16,8 +16,7 @@ import {
 
 import { useDebounceValue } from 'hooks';
 
-import { STORAGE_KEYS } from 'constants';
-import { MOSCOW_COORDS } from 'constants';
+import { STORAGE_KEYS,  MOSCOW_COORDS } from 'constants';
 
 const subscribers = new Set();
 
